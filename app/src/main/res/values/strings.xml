@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FuelSpot</string>
+    <string name="app_version">1.0.0</string>
+    <string name="cadastroText">CADASTRO</string>
+    <string name="loginText">LOGIN</string>
+    <string name="emailLabel">Email</string>
+    <string name="senhaLabel">Senha</string>
+    <string name="forgotPasswordText">Esqueceu Sua Senha?</string>
+    <string name="noAccountText">Caso Não Tenha Uma Conta</string>
+    <string name="confirmarText">CONFIRMAR</string>
+    <string name="placeholderEmail">email@app.com..."</string>
+</resources>
