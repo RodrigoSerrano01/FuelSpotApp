@@ -1,12 +1,30 @@
 <resources>
     <string name="app_name">FuelSpot</string>
     <string name="app_version">1.0.0</string>
-    <string name="cadastroText">CADASTRO</string>
-    <string name="loginText">LOGIN</string>
+
+    <!--Labels-->
+    <string name="nomeLabel">Nome</string>
     <string name="emailLabel">Email</string>
     <string name="senhaLabel">Senha</string>
+    <string name="addPostoLabel">Adicionar Posto</string>
+    <string name="souProprietarioLabel">Sou Proprietário</string>
+    <string name="confirmarSenhaLabel">Confirmar Senha</string>
+    <string name="cnpjLabel">CNPJ</string>
+    <string name="cepLabel">Cep</string>
+    <string name="bairroLabel">Bairro</string>
+    <string name="cidadeLabel">Cidade</string>
+    <string name="ruaLabel">Rua</string>
+    <string name="numeroLabel">Número</string>
+
+    <!--Texts-->
     <string name="forgotPasswordText">Esqueceu Sua Senha?</string>
     <string name="noAccountText">Caso Não Tenha Uma Conta</string>
-    <string name="confirmarText">CONFIRMAR</string>
-    <string name="placeholderEmail">email@app.com..."</string>
+    <string name="confirmarText">Confirmar</string>
+    <string name="cadastroText">Cadastro</string>
+    <string name="addPostoText">Cadastro de Posto</string>
+    <string name="loginText">Login</string>
+
+    <!--Placeholders-->
+    <string name="placeholderEmail">email@app.com...</string>
+    <string name="placeholderName">Fulano de Fulanison XIV</string>
 </resources>

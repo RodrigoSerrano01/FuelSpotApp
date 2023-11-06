@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterSpotActivity">
+    <include
+        android:id="@+id/include"
+        layout="@layout/header_layout" />
+
+    <include
+        layout="@layout/version_layout"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="Ícone do aplicativo"
+        android:src="@drawable/fuespotlogo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_LoginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/addPostoText"
+        app:layout_constraintBottom_toBottomOf="@+id/login_emailText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appIcon"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <!-- CNPJ -->
+
+    <TextView
+        android:id="@+id/register_cnpjText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cnpjLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_cnpj"
+        app:layout_constraintEnd_toEndOf="@+id/register_cnpj"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_cnpj" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/register_cnpj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:inputType="number"
+        app:mask="__.___.___/____-__"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appIcon" />
+
+    <!-- CEP -->
+
+    <TextView
+        android:id="@+id/register_cepText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cepLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_cep"
+        app:layout_constraintEnd_toEndOf="@+id/register_cep"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_cep" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/register_cep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:inputType="number"
+        android:textColor="#A9A9A9"
+        app:layout_constraintBottom_toBottomOf="@+id/include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_cnpj"
+        app:layout_constraintVertical_bias="0.024"
+        app:mask="_____-___"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
+
+
+    <!--Bairro-->
+
+    <TextView
+        android:id="@+id/register_bairroText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bairroLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_bairro"
+        app:layout_constraintEnd_toEndOf="@+id/register_bairro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_bairro" />
+    <EditText
+        android:id="@+id/register_bairro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_cep" />
+
+    <!--Cidade-->
+
+    <TextView
+        android:id="@+id/register_cidadeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cidadeLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_cidade"
+        app:layout_constraintEnd_toEndOf="@+id/register_cidade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_cidade" />
+
+    <EditText
+        android:id="@+id/register_cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintStart_toEndOf="@+id/register_bairro"
+        app:layout_constraintTop_toBottomOf="@+id/register_cep" />
+
+    <!--Rua-->
+
+    <TextView
+        android:id="@+id/register_ruaText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ruaLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_rua"
+        app:layout_constraintEnd_toEndOf="@+id/register_rua"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_rua" />
+
+    <EditText
+        android:id="@+id/register_rua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/register_bairro" />
+
+    <!--Número-->
+
+    <TextView
+        android:id="@+id/register_numeroText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/numeroLabel"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/register_numero"
+        app:layout_constraintEnd_toEndOf="@+id/register_numero"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_numero" />
+
+    <EditText
+        android:id="@+id/register_numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:inputType="number"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintStart_toEndOf="@+id/register_rua"
+        app:layout_constraintTop_toBottomOf="@+id/register_cidade" />
+
+    <!-- CONFIRMAR BUTTON-->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/login_loginButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/button"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/confirmarText"
+        android:textAllCaps="true"
+        app:mask="+90 (___) ___ __ __"
+        app:maskCharacter="_"
+        app:maskStyle="completable"
+        android:textColor="#FFFFFF"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkbox_meat" />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
