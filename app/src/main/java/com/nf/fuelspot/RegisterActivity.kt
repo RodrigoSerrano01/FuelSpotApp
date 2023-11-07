@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatButton
 import android.view.View
 import android.widget.Button
 import androidx.constraintlayout.widget.ConstraintLayout
+import utils.ButtonActionsUtil
 
 class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +21,8 @@ class RegisterActivity : AppCompatActivity() {
         val addPostoText = findViewById<TextView>(R.id.register_addPostoText)
         val addPostoButton = findViewById<TextView>(R.id.register_addPostoButton)
         val confirmButton = findViewById<AppCompatButton>(R.id.login_loginButton)
+        val registerButton = findViewById<Button>(R.id.registerButton)
+        val loginButton = findViewById<Button>(R.id.loginButton)
 
         checkboxMeat.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -48,6 +51,14 @@ class RegisterActivity : AppCompatActivity() {
 
             // Inicie a nova atividade
             startActivity(intent)
+        }
+
+        registerButton.setOnClickListener {
+            ButtonActionsUtil.handleRegisterButtonClick(this)
+        }
+
+        loginButton.setOnClickListener {
+            ButtonActionsUtil.handleLoginButtonClick(this)
         }
 
     }

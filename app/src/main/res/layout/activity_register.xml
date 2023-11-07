@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#DCDCDC"
+    android:background="@color/grayBG"
     tools:context="com.nf.fuelspot.RegisterActivity">
 
     <include
@@ -34,6 +34,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/cadastroText"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toBottomOf="@+id/login_emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -48,6 +50,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/nomeLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/register_nome"
         app:layout_constraintEnd_toEndOf="@+id/register_nome"
@@ -75,6 +79,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/emailLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         tools:layout_editor_absoluteX="101dp"
         app:layout_constraintBottom_toTopOf="@+id/register_emailLogin"
@@ -106,6 +112,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="@string/senhaLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/register_password"
         app:layout_constraintEnd_toEndOf="@+id/register_password"
@@ -133,6 +141,8 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:text="@string/confirmarSenhaLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/register_confirmPassword"
         app:layout_constraintEnd_toEndOf="@+id/register_confirmPassword"
@@ -147,6 +157,7 @@
         android:ems="10"
         android:inputType="textPassword"
         android:text="@string/placeholderEmail"
+
         android:textColor="#A9A9A9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -161,6 +172,8 @@
         android:layout_height="41dp"
         android:layout_marginTop="4dp"
         android:text="@string/souProprietarioLabel"
+        android:textColor="@color/black"
+
         android:textSize="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +187,7 @@
         android:layout_height="wrap_content"
         android:text="@string/addPostoLabel"
         android:textAllCaps="true"
+        android:textColor="@color/black"
 
         app:layout_constraintBottom_toBottomOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
@@ -184,6 +198,7 @@
 
     <TextView
         android:visibility="gone"
+        android:textColor="@color/black"
 
         android:id="@+id/register_addPostoButton"
         android:layout_width="36dp"

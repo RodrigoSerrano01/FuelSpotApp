@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grayBG"
     tools:context=".RegisterSpotActivity">
     <include
         android:id="@+id/include"
@@ -32,6 +33,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:text="@string/addPostoText"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toBottomOf="@+id/login_emailText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -47,6 +50,8 @@
         android:layout_height="wrap_content"
         android:text="@string/cnpjLabel"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/register_cnpj"
         app:layout_constraintEnd_toEndOf="@+id/register_cnpj"
         app:layout_constraintHorizontal_bias="0.0"
@@ -77,6 +82,8 @@
         android:layout_height="wrap_content"
         android:text="@string/cepLabel"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/register_cep"
         app:layout_constraintEnd_toEndOf="@+id/register_cep"
         app:layout_constraintHorizontal_bias="0.0"
@@ -110,6 +117,8 @@
         android:layout_height="wrap_content"
         android:text="@string/bairroLabel"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/register_bairro"
         app:layout_constraintEnd_toEndOf="@+id/register_bairro"
         app:layout_constraintHorizontal_bias="0.0"
@@ -137,6 +146,8 @@
         android:layout_height="wrap_content"
         android:text="@string/cidadeLabel"
         android:textAllCaps="true"
+        android:textColor="@color/black"
+
         app:layout_constraintBottom_toTopOf="@+id/register_cidade"
         app:layout_constraintEnd_toEndOf="@+id/register_cidade"
         app:layout_constraintHorizontal_bias="0.0"
@@ -164,6 +175,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/ruaLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/register_rua"
         app:layout_constraintEnd_toEndOf="@+id/register_rua"
@@ -192,6 +205,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/numeroLabel"
+        android:textColor="@color/black"
+
         android:textAllCaps="true"
         app:layout_constraintBottom_toTopOf="@+id/register_numero"
         app:layout_constraintEnd_toEndOf="@+id/register_numero"

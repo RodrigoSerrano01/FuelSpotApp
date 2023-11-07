@@ -27,4 +27,5 @@
     <!--Placeholders-->
     <string name="placeholderEmail">email@app.com...</string>
     <string name="placeholderName">Fulano de Fulanison XIV</string>
+    <string name="title_activity_maps">MapsActivity</string>
 </resources>

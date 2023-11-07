@@ -12,6 +12,8 @@
         android:background="@drawable/border"
         android:elevation="20dp"
         android:padding="10dp"
+        android:textColor="@color/black"
+
         android:shadowColor="#000"
         android:text="@string/app_version"
         android:textStyle="bold"

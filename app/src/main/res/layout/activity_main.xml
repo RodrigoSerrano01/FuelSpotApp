@@ -4,180 +4,31 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#DCDCDC"
+    android:background="@color/grayBG"
         tools:context=".MainActivity">
 
     <include
-        android:id="@+id/include2"
+        android:id="@+id/header_layout"
         layout="@layout/header_layout" />
-
-    <ImageView
-        android:id="@+id/appIcon"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:layout_marginTop="44dp"
-        android:contentDescription="Ícone do aplicativo"
-        android:src="@drawable/fuespotlogo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/login_LoginText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/loginText"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toBottomOf="@+id/login_emailText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appIcon"
-        app:layout_constraintVertical_bias="0.035" />
-
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="216dp"
-        android:background="@drawable/button"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:text="@string/confirmarText"
-        android:textAllCaps="true"
-        android:textColor="#FFFFFF"
-        android:textSize="29sp"
-
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/include2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/login_registerButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button"
-        android:paddingStart="30dp"
-        android:paddingEnd="30dp"
-        android:text="@string/cadastroText"
-        android:textColor="#FFFFFF"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/include2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.893"
-        android:textAllCaps="true"
-        />
-
-    <!--EMAIL-->
 
     <include
         layout="@layout/version_layout"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="16dp" />
+        tools:layout_editor_absoluteY="0dp" />
 
-    <TextView
-        android:id="@+id/login_emailText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/emailLabel"
-        android:textAllCaps="true"
-        tools:layout_editor_absoluteX="101dp"
-        app:layout_constraintBottom_toTopOf="@+id/login_emailLogin"
-        app:layout_constraintEnd_toEndOf="@+id/login_emailLogin"
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:layout_marginTop="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/appTittle"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/login_emailLogin"
-        />
-
-    <EditText
-        android:id="@+id/login_emailLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:backgroundTint="@color/green"
-        android:ems="10"
-        android:inputType="textEmailAddress"
-        android:text="@string/placeholderEmail"
-        android:textColor="#A9A9A9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appIcon" />
-
-    <!--SENHA-->
-
-
-    <EditText
-        android:id="@+id/login_passwordLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="@color/green"
-        android:ems="10"
-        android:inputType="textPassword"
-        android:text="@string/placeholderEmail"
-        android:textColor="#A9A9A9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_emailLogin" />
-
-
-    <CheckBox
-        android:id="@+id/checkbox_meat"
-        android:layout_width="127dp"
-        android:layout_height="41dp"
-        android:text="@string/souProprietarioLabel"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="@+id/login_forgotPasswordText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_passwordLogin"
-        app:layout_constraintVertical_bias="0.239" />
-
-    <TextView
-        android:id="@+id/login_forgotPasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/forgotPasswordText"
-        android:textColor="#A9A9A9"
-        app:layout_constraintBottom_toTopOf="@+id/login_loginButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/login_passwordLogin"
-        app:layout_constraintVertical_bias="0.596" />
-
-    <TextView
-        android:id="@+id/login_senhaText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
-        android:text="@string/senhaLabel"
-        android:textAllCaps="true"
-        app:layout_constraintBottom_toTopOf="@+id/login_passwordLogin"
-        app:layout_constraintEnd_toEndOf="@+id/login_passwordLogin"
-        app:layout_constraintStart_toStartOf="@+id/login_passwordLogin"
-        />
-
-    <TextView
-        android:id="@+id/login_noAccountText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/noAccountText"
-        android:textColor="#A9A9A9"
-        app:layout_constraintBottom_toTopOf="@+id/login_registerButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_loginButton" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.09"
+        tools:context=".MapsActivity" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
