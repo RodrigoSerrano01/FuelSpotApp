@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:background="@drawable/border"
+        app:cardCornerRadius="150px"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="359dp"
+            android:layout_height="match_parent"
+            >
+
+
+            <TextView
+                android:id="@+id/spotName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="28dp"
+                android:text="Nome do Posto"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.098" />
+
+            <TextView
+                android:id="@+id/spotStreetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rua Do Posto"
+                android:textSize="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/spotName"
+                app:layout_constraintStart_toStartOf="@+id/spotName"
+                app:layout_constraintTop_toBottomOf="@+id/spotName"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/spotPriceText"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:text="Preço:"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/spotPrice"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.839" />
+
+            <TextView
+                android:id="@+id/spotPrice"
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="232dp"
+                android:text="R$20.00"
+                android:textColor="@color/green"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.839" />
+
+            <TextView
+                android:id="@+id/spotDistanceTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="2+ Minutos"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/navigationIcon"
+                app:layout_constraintHorizontal_bias="0.946"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.197" />
+
+            <TextView
+                android:id="@+id/spotReviewScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="4.5"
+                app:layout_constraintBottom_toBottomOf="@+id/starIcon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/starIcon"
+                app:layout_constraintTop_toTopOf="@+id/starIcon"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/spotDistance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="24dp"
+                android:text="2km"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/navigationIcon"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spotDistanceTime"
+                app:layout_constraintVertical_bias="0.636" />
+
+            <ImageView
+                android:id="@+id/navigationIcon"
+
+                android:layout_width="48dp"
+                android:layout_height="56dp"
+                android:rotation="35"
+                android:src="@drawable/ic_navigation_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.948"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.454" />
+
+            <ImageView
+                android:id="@+id/starIcon"
+
+                android:layout_width="29dp"
+                android:layout_height="0dp"
+                android:src="@drawable/ic_star_icon"
+                app:layout_constraintBottom_toBottomOf="@+id/spotName"
+                app:layout_constraintStart_toEndOf="@+id/spotName"
+                app:layout_constraintTop_toTopOf="@+id/spotName" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

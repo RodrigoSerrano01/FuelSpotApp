@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayBG"
+    tools:context=".ProfileActivity">
+
+    <include layout="@layout/header_layout"
+        />
+    <include layout="@layout/version_layout"
+        />
+
+    <!--Imagem de Perfil-->
+
+    <ImageView
+        android:id="@+id/appIcon"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="44dp"
+        android:contentDescription="Ícone do aplicativo"
+        android:src="@drawable/placeholderprofilepic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/login_LoginText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="@string/profileText"
+        android:textColor="@color/black"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="@+id/login_emailText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appIcon"
+        app:layout_constraintVertical_bias="0.035" />
+
+    <!--Nome-->
+
+    <TextView
+        android:id="@+id/profile_nameText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/nomeLabel"
+        android:textColor="@color/black"
+
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/profile_nome"
+        app:layout_constraintEnd_toEndOf="@+id/profile_nome"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_nome" />
+
+    <EditText
+        android:id="@+id/profile_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/placeholderName"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appIcon" />
+
+    <ImageView
+        android:id="@+id/editNameView"
+        android:layout_width="45dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_nome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_nameText"
+        app:srcCompat="@drawable/ic_edit_icon" />
+
+
+    <!--Email-->
+
+    <TextView
+        android:id="@+id/profile_emailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/emailLabel"
+        android:textColor="@color/black"
+
+        android:textAllCaps="true"
+        tools:layout_editor_absoluteX="101dp"
+        app:layout_constraintBottom_toTopOf="@+id/profile_email"
+        app:layout_constraintEnd_toEndOf="@+id/profile_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/profile_email"
+        />
+
+    <EditText
+        android:id="@+id/profile_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:text="@string/placeholderEmail"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_nome" />
+
+    <ImageView
+        android:id="@+id/editEmailView"
+        android:layout_width="45dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="56dp"
+        app:layout_constraintBottom_toBottomOf="@+id/profile_email"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_emailText"
+        app:srcCompat="@drawable/ic_edit_icon" />
+
+
+    <!--Telefone-->
+    <!-- Não tem nenhum campo que peça o telefone dele então esse campo  vai ficar postergado por enquanto-->
+
+    <!-- Avaliações -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/checkReviewsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/blue"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/checkReviewsText"
+
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email"
+        app:layout_constraintVertical_bias="0.584" />
+
+    <!--Se Proprietário-->
+
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/checkSpotsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button"
+        android:backgroundTint="@color/yellow"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:text="@string/checkSpotText"
+
+        android:textAllCaps="true"
+        android:textColor="#FFFFFF"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/confirmButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkReviewsButton"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <!-- CONFIRMAR BUTTON-->
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/confirmButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:background="@drawable/button"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/confirmarText"
+        android:textAllCaps="true"
+
+        android:textColor="#FFFFFF"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profile_email"
+        app:layout_constraintVertical_bias="0.972" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,6 +23,9 @@
     <string name="cadastroText">Cadastro</string>
     <string name="addPostoText">Cadastro de Posto</string>
     <string name="loginText">Login</string>
+    <string name="profileText">Editar Perfil</string>
+    <string name="checkSpotText">Meus Postos</string>
+    <string name="checkReviewsText">Minhas Avaliações</string>
 
     <!--Placeholders-->
     <string name="placeholderEmail">email@app.com...</string>

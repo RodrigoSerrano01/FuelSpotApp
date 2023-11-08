@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "75523526404",
+    "project_id": "fuelspot-404420",
+    "storage_bucket": "fuelspot-404420.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:75523526404:android:eee0419cf83e41c3cd0a51",
+        "android_client_info": {
+          "package_name": "com.nf.fuelspot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDVNzExVE9Qp6W6oWgwDa7s8kNHrisX7mU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

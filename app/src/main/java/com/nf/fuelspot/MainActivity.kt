@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -15,16 +16,22 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.gms.maps.MapView
+import com.nf.fuelspot.databinding.ActivityMainBinding
 import utils.ButtonActionsUtil
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private lateinit var binding: ActivityMainBinding
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        initReclyclerView()
+
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -42,6 +49,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         loginButton.setOnClickListener {
             ButtonActionsUtil.handleLoginButtonClick(this)
         }
+
     }
 
     override fun onMapReady(googleMap: GoogleMap) {
@@ -69,4 +77,20 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
             )
         }
     }
+
+    private fun initReclyclerView() {
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.setHasFixedSize(true)
+        binding.recyclerView.adapter = Adapter_spot(getList())
+
+    }
+
+    private fun getList() = listOf(
+        "Matheus",
+        "Juan",
+        "Gustavo",
+        "Rodrigo",
+        "Vini"
+    )
+
 }
