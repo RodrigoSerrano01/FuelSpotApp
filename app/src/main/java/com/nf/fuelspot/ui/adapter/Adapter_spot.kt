@@ -12,12 +12,13 @@ import com.nf.fuelspot.model.Posto
 class Adapter_spot(
     //private val myList: List<String>,
     private val context: Context,
-    private  val listaPosto : List<Posto>
+    private val listaPosto: List<Posto>
 
 ) : RecyclerView.Adapter<Adapter_spot.MyViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
-       val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_spot, parent, false)
+        val itemView =
+            LayoutInflater.from(parent.context).inflate(R.layout.item_spot, parent, false)
         return MyViewHolder(itemView)
     }
 
@@ -41,7 +42,8 @@ class Adapter_spot(
 //        holder.spotDistanceTime.text = distanceTime
 
     }
-    class MyViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+    class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun vincula(posto: Posto) {
             val spotName: TextView = itemView.findViewById(R.id.spotName)
             spotName.text = posto.name

@@ -1,6 +1,7 @@
 package com.nf.fuelspot.ui.activity
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.widget.Button
@@ -16,6 +17,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
 import com.nf.fuelspot.R
 import com.nf.fuelspot.databinding.ActivityMainBinding
 import com.nf.fuelspot.model.Posto
@@ -38,6 +40,18 @@ import java.math.BigDecimal
         val loginButton = findViewById<Button>(R.id.loginButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
 
+        /**
+         * Como só temos a tela principal, com login e cadastre-se aparecendo mesmo com o usuário
+         * já estando cadastrado, ele está sendo redirecionado por um método na activity de login
+         * TODO arrumar essa lógica após termos as duas telas mapa
+         */
+        binding.btSignOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val voltarLogin = Intent(this, LoginActivity::class.java)
+            startActivity(voltarLogin)
+            finish()
+        }
+
       //  initReclyclerView()
 
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
@@ -52,7 +66,7 @@ import java.math.BigDecimal
                 , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00"))
         )
         )
-        HeaderActivity.createListener(registerButton,loginButton,textTittle,this);
+        HeaderActivity.createListener(registerButton,loginButton,textTittle,this)
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
