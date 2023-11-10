@@ -1,8 +1,9 @@
-package com.nf.fuelspot
+package com.nf.fuelspot.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.nf.fuelspot.R
 import utils.ButtonActionsUtil
 
 class RegisterSpotActivity : AppCompatActivity() {

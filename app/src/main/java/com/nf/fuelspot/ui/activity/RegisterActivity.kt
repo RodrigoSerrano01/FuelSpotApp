@@ -1,4 +1,4 @@
-package com.nf.fuelspot
+package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

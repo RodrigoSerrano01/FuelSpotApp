@@ -16,7 +16,7 @@
         android:theme="@style/Theme.FuelSpot"
         tools:targetApi="31">
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ui.activity.ProfileActivity"
             android:exported="false" />
 
         <meta-data
@@ -24,16 +24,16 @@
             android:value="AIzaSyCGh3K1INhVpN8PdkPbr8tadiX_2dhdv8Y" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterSpotActivity"
+            android:name=".ui.activity.RegisterSpotActivity"
             android:exported="false" />
         <activity
-            android:name=".RegisterActivity"
+            android:name=".ui.activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

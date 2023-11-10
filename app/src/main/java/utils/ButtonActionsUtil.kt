@@ -2,8 +2,8 @@ package utils
 
 import android.content.Context
 import android.content.Intent
-import com.nf.fuelspot.LoginActivity
-import com.nf.fuelspot.RegisterActivity
+import com.nf.fuelspot.ui.activity.LoginActivity
+import com.nf.fuelspot.ui.activity.RegisterActivity
 
 class ButtonActionsUtil {
     companion object {

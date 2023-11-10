@@ -1,10 +1,10 @@
-package com.nf.fuelspot
+package com.nf.fuelspot.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.content.Intent
 import android.widget.Button
-import android.widget.ImageView
+import com.nf.fuelspot.R
 import utils.ButtonActionsUtil
 
 class LoginActivity : AppCompatActivity() {

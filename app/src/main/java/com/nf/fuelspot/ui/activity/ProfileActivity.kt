@@ -1,7 +1,8 @@
-package com.nf.fuelspot
+package com.nf.fuelspot.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nf.fuelspot.R
 
 class ProfileActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
