@@ -3,6 +3,7 @@ package com.nf.fuelspot.ui.activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.CheckBox
@@ -17,13 +18,16 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthUserCollisionException
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException
+import com.google.firebase.firestore.FirebaseFirestore
 import com.nf.fuelspot.databinding.ActivityRegisterBinding
+import java.security.MessageDigest
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityRegisterBinding
 
     private val authentication = FirebaseAuth.getInstance()
+    private val database = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,10 +62,27 @@ class RegisterActivity : AppCompatActivity() {
                             snackbar.setBackgroundTint(Color.GREEN)
                             snackbar.setTextColor(Color.BLACK)
                             snackbar.show()
+
+                            val usuariosMap = hashMapOf(
+                                "nome" to nome,
+                                "e-mail" to email,
+                                "senha" to encriptaSenha(senha)
+                            )
+
+                            database.collection("Usuários")
+                                .document(nome).set(usuariosMap)
+                                .addOnCompleteListener {
+                                    Log.d("database", "Dados salvos com sucesso!")
+                                }.addOnFailureListener {
+                                    Log.d("database", "Erro durante o salvamento dos dados!")
+                                }
+
+
                             binding.registerNome.setText("")
                             binding.registerEmailLogin.setText("")
                             binding.registerPassword.setText("")
                             binding.registerConfirmPassword.setText("")
+
                         }
                     }.addOnFailureListener { exception ->
                         val errorMessage = when (exception) {
@@ -118,12 +139,19 @@ class RegisterActivity : AppCompatActivity() {
         addSpotButton.setOnClickListener {
             // Crie um Intent para abrir a tela de cadastro (activity_register)
             val intent = Intent(this, RegisterSpotActivity::class.java)
-
             // Inicie a nova atividade
             startActivity(intent)
         }
+        HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
+    }
 
-        HeaderActivity.createListener(registerButton,loginButton,textTittle,this);
-
+    /**
+     * Função para encriptar senha e salvar no banco
+     */
+    fun encriptaSenha(senha: String): String {
+        val bytes = senha.toByteArray()
+        val digest = MessageDigest.getInstance("SHA-256")
+        val senhaHash = digest.digest(bytes)
+        return senhaHash.joinToString("") { "%02x".format(it) }
     }
 }
