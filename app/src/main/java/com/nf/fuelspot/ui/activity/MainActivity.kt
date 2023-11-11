@@ -1,9 +1,11 @@
 package com.nf.fuelspot.ui.activity
+
 import android.Manifest
 import android.content.pm.PackageManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
@@ -14,14 +16,14 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.nf.fuelspot.ui.adapter.Adapter_spot
 import com.nf.fuelspot.R
 import com.nf.fuelspot.databinding.ActivityMainBinding
 import com.nf.fuelspot.model.Posto
+import com.nf.fuelspot.ui.adapter.Adapter_spot
 import utils.ButtonActionsUtil
 import java.math.BigDecimal
 
-class MainActivity : AppCompatActivity(), OnMapReadyCallback {
+ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var mMap: GoogleMap
@@ -31,6 +33,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val registerButton = findViewById<Button>(R.id.registerButton)
+        val loginButton = findViewById<Button>(R.id.loginButton)
+        val textTittle = findViewById<TextView>(R.id.appTittle)
 
       //  initReclyclerView()
 
@@ -46,7 +52,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00"))
         )
         )
-
+        HeaderActivity.createListener(registerButton,loginButton,textTittle,this);
 
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -54,16 +60,22 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
-        val registerButton = findViewById<Button>(R.id.registerButton)
-        val loginButton = findViewById<Button>(R.id.loginButton)
 
-        registerButton.setOnClickListener {
-            ButtonActionsUtil.handleRegisterButtonClick(this)
-        }
 
-        loginButton.setOnClickListener {
-            ButtonActionsUtil.handleLoginButtonClick(this)
-        }
+//        val registerButton = findViewById<Button>(R.id.registerButton)
+//        val loginButton = findViewById<Button>(R.id.loginButton)
+//       // val textTittle = findViewById<TextView>(R.id.appTittle)
+//
+//        registerButton.setOnClickListener {
+//            ButtonActionsUtil.handleRegisterButtonClick(this)
+//        }
+//
+//        loginButton.setOnClickListener {
+//            ButtonActionsUtil.handleLoginButtonClick(this)
+//        }
+////        textTittle.setOnClickListener {
+////            ButtonActionsUtil.handleComeBackTextClick(this)
+////        }
 
     }
 
@@ -77,9 +89,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
              fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                 location?.let {
                     val userLocation = LatLng(location.latitude, location.longitude)
-
+                    //val userLocation = LatLng(-30.12067486761821, -51.07503957487643)
                     mMap.clear()
-
                     mMap.addMarker(MarkerOptions().position(userLocation).title("Sua Localização Atual"))
                     mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
                 }

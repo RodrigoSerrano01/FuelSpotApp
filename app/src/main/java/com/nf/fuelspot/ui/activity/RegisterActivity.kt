@@ -23,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
         val confirmButton = findViewById<AppCompatButton>(R.id.login_loginButton)
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
+        val textTittle = findViewById<TextView>(R.id.appTittle)
 
         checkboxMeat.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -53,13 +54,7 @@ class RegisterActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        registerButton.setOnClickListener {
-            ButtonActionsUtil.handleRegisterButtonClick(this)
-        }
-
-        loginButton.setOnClickListener {
-            ButtonActionsUtil.handleLoginButtonClick(this)
-        }
+        HeaderActivity.createListener(registerButton,loginButton,textTittle,this);
 
     }
 }
