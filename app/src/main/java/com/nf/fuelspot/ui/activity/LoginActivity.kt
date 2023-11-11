@@ -53,11 +53,10 @@ class LoginActivity : AppCompatActivity() {
                         }
                     }.addOnFailureListener { exception ->
                         val errorMessage = when (exception) {
-                            is FirebaseAuthInvalidUserException -> "E-mail inválido ou inexistente!"
-                            is FirebaseAuthInvalidCredentialsException -> "A senha está incorreta!"
+                            is FirebaseAuthInvalidCredentialsException -> "E-mail inválido ou inexistente!"
                             is FirebaseNetworkException -> "Sem conexão com a Internet!"
                             else -> {
-                                "Erro durante o login de usuário!"
+                                "Senha incorreta!"
                             }
                         }
                         val snackbar = Snackbar.make(
