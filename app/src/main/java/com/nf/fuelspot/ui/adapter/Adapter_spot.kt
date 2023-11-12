@@ -7,12 +7,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nf.fuelspot.R
+import com.nf.fuelspot.controller.GasStationController
+import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.model.Posto
 
 class Adapter_spot(
     //private val myList: List<String>,
     private val context: Context,
-    private val listaPosto: List<Posto>
+    private val listaPosto: List<GasStationController>
 
 ) : RecyclerView.Adapter<Adapter_spot.MyViewHolder>() {
 
@@ -44,19 +46,19 @@ class Adapter_spot(
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun vincula(posto: Posto) {
+        fun vincula(gasController: GasStationController) {
             val spotName: TextView = itemView.findViewById(R.id.spotName)
-            spotName.text = posto.name
+            spotName.text = gasController.getGasName()
             val spotPrice: TextView = itemView.findViewById(R.id.spotPrice)
-            spotPrice.text = posto.price.toPlainString();
+            spotPrice.text = gasController.getGasPrice()
             val spotReviewScore: TextView = itemView.findViewById(R.id.spotReviewScore)
-            spotReviewScore.text = posto.score.toPlainString()
+            spotReviewScore.text = gasController.getGasScore()
             val spotAddress: TextView = itemView.findViewById(R.id.spotStreetName)
-            spotAddress.text = posto.address
+            spotAddress.text = gasController.getGasAddress()
             val spotDistance: TextView = itemView.findViewById(R.id.spotDistance)
-            spotDistance.text = posto.distance.toPlainString()
+            spotDistance.text = gasController.getGasDistance()
             val spotDistanceTime: TextView = itemView.findViewById(R.id.spotDistanceTime)
-            spotDistanceTime.text = posto.distanceTime.toPlainString()
+            spotDistanceTime.text = gasController.getGasDistanceTime()
 
         }
 

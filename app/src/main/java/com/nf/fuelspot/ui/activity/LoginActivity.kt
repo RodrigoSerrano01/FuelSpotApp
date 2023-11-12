@@ -3,6 +3,7 @@ package com.nf.fuelspot.ui.activity
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.nf.fuelspot.R
 import com.nf.fuelspot.databinding.ActivityLoginBinding
+import java.security.MessageDigest
 import java.util.Objects
+import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -37,6 +40,9 @@ class LoginActivity : AppCompatActivity() {
         binding.loginLoginButton.setOnClickListener {
             val email = binding.loginEmailLogin.text.toString()
             val senha = binding.loginPasswordLogin.text.toString()
+            val hashPassword = encriptaSenha(senha)
+            Log.d(toString(),encriptaSenha(senha))
+            Log.d(toString(),senha)
 
             if (email.isEmpty() || senha.isEmpty()) {
                 val snackbar = Snackbar.make(
@@ -46,7 +52,9 @@ class LoginActivity : AppCompatActivity() {
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.show()
             } else {
-                authentication.signInWithEmailAndPassword(email, senha)
+
+                authentication.signInWithEmailAndPassword(email,hashPassword)
+
                     .addOnCompleteListener { auth ->
                         if (auth.isSuccessful) {
                             mainActivityRedirect()
@@ -57,6 +65,7 @@ class LoginActivity : AppCompatActivity() {
                             is FirebaseNetworkException -> "Sem conexão com a Internet!"
                             else -> {
                                 "Senha incorreta!"
+
                             }
                         }
                         val snackbar = Snackbar.make(
@@ -76,6 +85,18 @@ class LoginActivity : AppCompatActivity() {
         HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
     }
 
+
+
+
+
+    fun encriptaSenha(senha: String): String {
+        val bytes = senha.toByteArray()
+        val digest = MessageDigest.getInstance("SHA-256")
+        val senhaHash = digest.digest(bytes)
+        return senhaHash.joinToString("") { "%02x".format(it) }
+    }
+
+
     override fun onStart() {
         super.onStart()
         val usuarioAtual = FirebaseAuth.getInstance().currentUser
@@ -92,4 +113,7 @@ class LoginActivity : AppCompatActivity() {
         startActivity(intent)
         finish()
     }
+
+
+
 }

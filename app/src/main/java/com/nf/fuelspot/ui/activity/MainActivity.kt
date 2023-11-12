@@ -1,13 +1,31 @@
 package com.nf.fuelspot.ui.activity
 
+import android.Manifest
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
+import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
+import com.google.firebase.auth.FirebaseAuth
+import com.nf.fuelspot.R
 import com.nf.fuelspot.databinding.ActivityMainBinding
 import com.nf.fuelspot.controller.UserController
+import com.nf.fuelspot.model.Posto
+import com.nf.fuelspot.service.UserService
+import com.nf.fuelspot.ui.adapter.Adapter_spot
+import java.math.BigDecimal
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
@@ -21,30 +39,31 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         //val listaUser = mutableListOf<UserService>()
 
 
-        val userS : UserController = UserController()
-
-        userS.createUser("Rodrigo","Rodrigo@gmail.com")
-
+//        val userS : UserController = UserController()
+//
+//        userS.createUser("Rodrigo","RodrigoTesteCripto@gmail.com", "12345678")
+//
         val user1 : UserController = UserController()
-
-        user1.createUser("Rodrigo1","Rodrigo1@gmail.com")
-        val user2 : UserController = UserController()
-
-        user2.createUser("Rodrigo2","Rodrigo2@gmail.com")
-
-        val listaUser = mutableListOf<UserController>(userS,user1)
-
-        listaUser.add(user2)
-
-        listaUser.forEach{
-            Log.d(toString(),it.toString())
-        }
-
+//
+        user1.createUser("teste123","123@gmail.com","12345678")
+//        val user2 : UserController = UserController()
+//
+//        user2.createUser("Rodrigo2","Rodrigo2@gmail.com","12345678")
+//
+//        val listaUser = mutableListOf<UserController>(userS,user1)
+//
+//        listaUser.add(user2)
+//
+//        listaUser.forEach{
+//            Log.d(toString(),it.toString())
+//        }
+//
+        UserService.userAddDataBase(user1)
 
 
         //user.createUser("Rodrigo","Rodrigo@gmail.com")
 
-        /*
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -67,17 +86,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
               //  initReclyclerView()
 
                 val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-                recyclerView.adapter = Adapter_spot(context = this, listaPosto = listOf(
-                    Posto(name = "teste", price = BigDecimal("10.00")
-                        , score = BigDecimal("10.00"), address = "Rua 1", distance = BigDecimal("10.00"), distanceTime = BigDecimal("10.00")),
-                    Posto(name = "teste2", price = BigDecimal("20.00")
-                        , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00")),
-                    Posto(name = "teste3", price = BigDecimal("10.00")
-                        , score = BigDecimal("10.00"), address = "Rua 1", distance = BigDecimal("10.00"), distanceTime = BigDecimal("10.00")),
-                    Posto(name = "teste4", price = BigDecimal("20.00")
-                        , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00"))
-                )
-                )
+//                recyclerView.adapter = Adapter_spot(context = this, listaPosto = listOf(
+//                    Posto(name = "teste", price = BigDecimal("10.00")
+//                        , score = BigDecimal("10.00"), address = "Rua 1", distance = BigDecimal("10.00"), distanceTime = BigDecimal("10.00")),
+//                    Posto(name = "teste2", price = BigDecimal("20.00")
+//                        , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00")),
+//                    Posto(name = "teste3", price = BigDecimal("10.00")
+//                        , score = BigDecimal("10.00"), address = "Rua 1", distance = BigDecimal("10.00"), distanceTime = BigDecimal("10.00")),
+//                    Posto(name = "teste4", price = BigDecimal("20.00")
+//                        , score = BigDecimal("20.00"), address = "Rua 2", distance = BigDecimal("20.00"), distanceTime = BigDecimal("20.00"))
+//                )
+//                )
                 HeaderActivity.createListener(registerButton,loginButton,textTittle,this)
 
                 val mapFragment = supportFragmentManager
@@ -114,8 +133,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
                 ) {
                      fusedLocationClient.lastLocation.addOnSuccessListener { location ->
                         location?.let {
-                            val userLocation = LatLng(location.latitude, location.longitude)
-                            //val userLocation = LatLng(-30.12067486761821, -51.07503957487643)
+                           // val userLocation = LatLng(location.latitude, location.longitude)
+                            val userLocation = LatLng(-30.12067486761821, -51.07503957487643)
                             mMap.clear()
                             mMap.addMarker(MarkerOptions().position(userLocation).title("Sua Localização Atual"))
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
@@ -144,10 +163,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         //        "Rodrigo",
         //        "Vini"
         //    )
-        */
+
     }
 
-     override fun onMapReady(p0: GoogleMap) {
-         TODO("Not yet implemented")
-     }
- }
+//     override fun onMapReady(p0: GoogleMap) {
+//         TODO("Not yet implemented")
+//     }
+
