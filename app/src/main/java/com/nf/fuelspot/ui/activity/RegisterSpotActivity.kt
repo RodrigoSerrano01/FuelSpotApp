@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import com.nf.fuelspot.R
-import utils.ButtonActionsUtil
+import com.nf.fuelspot.utils.ButtonActionsUtil
 
 class RegisterSpotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

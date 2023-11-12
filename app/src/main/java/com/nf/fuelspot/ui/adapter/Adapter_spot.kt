@@ -8,11 +8,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.GasStationController
-import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.model.Posto
 
 class Adapter_spot(
-    //private val myList: List<String>,
+
     private val context: Context,
     private val listaPosto: List<GasStationController>
 
@@ -29,19 +28,7 @@ class Adapter_spot(
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val posto = listaPosto[position]
         holder.vincula(posto)
-//        val name = myList[position]
-//        val price = myList[position]
-//        val score = myList[position]
-//        val address = myList[position]
-//        val distance = myList[position]
-//        val distanceTime = myList[position]
 
-//        holder.spotName.text = name
-//        holder.spotPrice.text = price
-//        holder.spotReviewScore.text = score
-//        holder.spotAddress.text = address
-//        holder.spotDistance.text = distance
-//        holder.spotDistanceTime.text = distanceTime
 
     }
 

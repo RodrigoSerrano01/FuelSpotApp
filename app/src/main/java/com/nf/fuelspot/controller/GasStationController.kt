@@ -1,7 +1,13 @@
 package com.nf.fuelspot.controller
 
+import android.content.Context
+import android.location.Geocoder
+import android.location.Geocoder.GeocodeListener
+import android.util.Log
 import com.nf.fuelspot.model.Posto
 import java.math.BigDecimal
+import java.util.Locale
+import kotlin.math.log
 
 
 /**
@@ -18,14 +24,16 @@ import java.math.BigDecimal
 
 
 class GasStationController : Posto() {
+     private lateinit var context:Context
 
-    fun createGasStation(name:String,price:BigDecimal,score:BigDecimal,address:String,distance:BigDecimal,distanceTime:BigDecimal){
+    fun createGasStation(context: Context,name:String,price:BigDecimal,score:BigDecimal,address:String,distance:BigDecimal,distanceTime:BigDecimal){
         this.name = name
         this.price = price
         this.score = score
         this.address = address
         this.distance = distance
         this.distanceTime= distanceTime
+        coordinatesByAdrres(context)
     }
 
     fun updateGasName(name:String){
@@ -67,6 +75,27 @@ class GasStationController : Posto() {
     fun getGasDistanceTime():String{
         return this.distanceTime.toPlainString()
     }
+    fun getGasLong():Double{
+        return this.longitude.toDouble()
+    }
+    fun getGasLat():Double{
+        return this.latitude.toDouble()
+    }
+
+    fun getStringCoordinate():String{
+        return "Longitude:${this.longitude} Latitude:${this.latitude}"
+    }
+
+    fun coordinatesByAdrres (context: Context){
+
+
+        val geocoder = Geocoder(context, Locale.getDefault())
+        val addresses = geocoder.getFromLocationName(this.address, 1)
+        val address = addresses!![0]
+        this.longitude = address.longitude.toBigDecimal()
+        this.latitude = address.latitude.toBigDecimal()
+    }
+
 
 
 }

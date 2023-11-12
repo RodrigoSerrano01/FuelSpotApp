@@ -1,4 +1,4 @@
-package utils
+package com.nf.fuelspot.utils
 
 import android.content.Context
 import android.content.Intent
