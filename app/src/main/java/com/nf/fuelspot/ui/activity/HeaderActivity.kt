@@ -4,7 +4,7 @@ import android.content.Context
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import utils.ButtonActionsUtil
+import com.nf.fuelspot.utils.ButtonActionsUtil
 
   class  HeaderActivity: AppCompatActivity() {
 
