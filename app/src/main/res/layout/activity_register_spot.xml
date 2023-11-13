@@ -64,15 +64,16 @@
         android:layout_marginTop="72dp"
         android:backgroundTint="@color/green"
         android:ems="10"
+        android:hint="__.___.___/____-__"
         android:inputType="number"
-        app:mask="__.___.___/____-__"
-        app:maskCharacter="_"
-        app:maskStyle="completable"
         android:textColor="#A9A9A9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appIcon" />
+        app:layout_constraintTop_toBottomOf="@+id/appIcon"
+        app:mask="__.___.___/____-__"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
 
     <!-- CEP -->
 
@@ -96,6 +97,7 @@
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/green"
         android:ems="10"
+        android:hint="_____-___"
         android:inputType="number"
         android:textColor="#A9A9A9"
         app:layout_constraintBottom_toBottomOf="@+id/include"
@@ -123,6 +125,7 @@
         app:layout_constraintEnd_toEndOf="@+id/register_bairro"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/register_bairro" />
+
     <EditText
         android:id="@+id/register_bairro"
         android:layout_width="wrap_content"
@@ -130,6 +133,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="@color/green"
         android:ems="4"
+        android:hint="Bairro"
         android:inputType="text"
         android:maxLength="20"
         android:textColor="#A9A9A9"
@@ -160,6 +164,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="@color/green"
         android:ems="4"
+        android:hint="Cidade"
         android:inputType="text"
         android:maxLength="20"
         android:textColor="#A9A9A9"
@@ -190,6 +195,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="@color/green"
         android:ems="4"
+        android:hint="Rua"
         android:inputType="text"
         android:maxLength="20"
         android:textColor="#A9A9A9"
@@ -220,6 +226,7 @@
         android:layout_marginTop="44dp"
         android:backgroundTint="@color/green"
         android:ems="4"
+        android:hint="Número"
         android:inputType="number"
         android:maxLength="20"
         android:textColor="#A9A9A9"

@@ -1,7 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
-import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -22,7 +21,6 @@ import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.databinding.ActivityMainBinding
 import com.nf.fuelspot.utils.RecyclerViewGasStationUtil
 import java.math.BigDecimal
-import java.util.Locale
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -131,10 +129,16 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val gas1: GasStationController = GasStationController()
         gas1.createGasStation(
             this,"teste", BigDecimal("10.00"), BigDecimal("10.00"),
-            "Herval do Oeste, São tomé, viamão RS", BigDecimal("10.00"), BigDecimal("10.00"))
+            "Herval do Oeste, São tomé, viamão RS, 316", BigDecimal("10.00"), BigDecimal("10.00"))
+
+        val gas2: GasStationController = GasStationController()
+        gas2.createGasStation(
+            this,"casa juan", BigDecimal("10.00"), BigDecimal("10.00"),
+            "91370-170", BigDecimal("10.00"), BigDecimal("10.00"))
 
         val gasList: MutableList<GasStationController> = mutableListOf<GasStationController>()
         gasList.add(gas1)
+        gasList.add(gas2)
 
         RecyclerViewGasStationUtil.addGasStationToRicylerView(recyclerView, this, gasList)
 
@@ -143,10 +147,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         var testeMap: MapController = MapController()
         val gasLocation = LatLng(gas1.getGasLat(),gas1.getGasLong())
 
+        val gasLocation1 = LatLng(gas2.getGasLat(),gas2.getGasLong())
+
 
 
         if (testeMap.permissionTest(this, this)) {
             testeMap.addGasStationMarker(googleMap, gasLocation, gas1)
+            testeMap.addGasStationMarker(googleMap, gasLocation1, gas2)
 
         } else {
             recreate();

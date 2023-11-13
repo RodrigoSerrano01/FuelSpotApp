@@ -2,12 +2,9 @@ package com.nf.fuelspot.controller
 
 import android.content.Context
 import android.location.Geocoder
-import android.location.Geocoder.GeocodeListener
-import android.util.Log
 import com.nf.fuelspot.model.Posto
 import java.math.BigDecimal
 import java.util.Locale
-import kotlin.math.log
 
 
 /**
@@ -26,7 +23,14 @@ import kotlin.math.log
 class GasStationController : Posto() {
      private lateinit var context:Context
 
-    fun createGasStation(context: Context,name:String,price:BigDecimal,score:BigDecimal,address:String,distance:BigDecimal,distanceTime:BigDecimal){
+    fun createGasStation(
+        context: Context,
+        name:String,
+        price:BigDecimal,
+        score:BigDecimal,
+        address:String,
+        distance: BigDecimal,
+        distanceTime:BigDecimal){
         this.name = name
         this.price = price
         this.score = score
@@ -94,6 +98,9 @@ class GasStationController : Posto() {
         val address = addresses!![0]
         this.longitude = address.longitude.toBigDecimal()
         this.latitude = address.latitude.toBigDecimal()
+
+
+
     }
 
 
