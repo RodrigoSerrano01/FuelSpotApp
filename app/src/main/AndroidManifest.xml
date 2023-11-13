@@ -25,6 +25,9 @@
             android:value="AIzaSyCGh3K1INhVpN8PdkPbr8tadiX_2dhdv8Y" />
 
         <activity
+            android:name=".ui.activity.ConfirmGasStationInfoActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.activity.LoginActivity"
             android:exported="false" />
         <activity
