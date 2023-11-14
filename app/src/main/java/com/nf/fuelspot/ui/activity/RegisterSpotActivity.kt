@@ -1,15 +1,12 @@
 package com.nf.fuelspot.ui.activity
 
-import android.content.Intent
-import android.icu.math.BigDecimal
 import android.location.Geocoder
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import com.nf.fuelspot.R
-import com.nf.fuelspot.controller.GasStationController
 import com.nf.fuelspot.databinding.ActivityRegisterSpotBinding
 import java.util.Locale
 
@@ -17,8 +14,8 @@ class RegisterSpotActivity : AppCompatActivity() {
     private lateinit var binding: ActivityRegisterSpotBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-       binding = ActivityRegisterSpotBinding.inflate(layoutInflater)
-       setContentView(binding.root)
+        binding = ActivityRegisterSpotBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
@@ -26,10 +23,10 @@ class RegisterSpotActivity : AppCompatActivity() {
         val confirmButton = findViewById<TextView>(R.id.login_loginButton)
 
 
-        HeaderActivity.createListener(registerButton,loginButton,textTittle,this)
+        HeaderActivity.createListener(registerButton, loginButton, textTittle, this)
 
         val registerCep = findViewById<TextView>(R.id.register_cepText)
-       val cep = binding.registerCep.text
+        val cep = binding.registerCep.text
 
 //        val gas1: GasStationController = GasStationController()
 //        gas1.createGasStation(
@@ -42,41 +39,28 @@ class RegisterSpotActivity : AppCompatActivity() {
 //        )
 
 
-
-
-
         //Log.d(toString(),"!!!!!!!!!!${onFocusChangeListener}")
 
-            Log.d(toString(),"!!!!!!!!!!${cep.toString()}")
+        Log.d(toString(), "!!!!!!!!!!${cep.toString()}")
 
 
-
-      // Log.d(toString(),"!!!!!!!!!!${cep}")
-
+        // Log.d(toString(),"!!!!!!!!!!${cep}")
 
 
-
-       confirmButton.setOnClickListener {
-
+        confirmButton.setOnClickListener {
 
 
-           val geocoder = Geocoder(this, Locale.getDefault())
-           val addresses = geocoder.getFromLocationName(cep.toString(), 1)
-           val address = addresses!![0]
+            val geocoder = Geocoder(this, Locale.getDefault())
+            val addresses = geocoder.getFromLocationName(cep.toString(), 1)
+            val address = addresses!![0]
 
-           binding.registerBairro.setText(address.subLocality.toString())
-           binding.registerCidade.setText(address.subAdminArea.toString())
-           binding.registerRua.setText(address.thoroughfare.toString())
-
-
-
-
+            binding.registerBairro.setText(address.subLocality.toString())
+            binding.registerCidade.setText(address.subAdminArea.toString())
+            binding.registerRua.setText(address.thoroughfare.toString())
 
 
 //           val intent = Intent(this, ConfirmGasStationInfoActivity::class.java)
 //           this.startActivity(intent)
-
-
 
 
 //            val snackbar = Snackbar.make(
@@ -84,7 +68,7 @@ class RegisterSpotActivity : AppCompatActivity() {
 //            )
 //            snackbar.setBackgroundTint(Color.RED)
 //            snackbar.show()
-       }
+        }
 //        binding.loginLoginButton.setOnClickListener {
 //
 //            val geocoder = Geocoder(this, Locale.getDefault())
@@ -96,7 +80,7 @@ class RegisterSpotActivity : AppCompatActivity() {
 //            )
 //            snackbar.setBackgroundTint(Color.RED)
 //            snackbar.show()
- //       }
+        //       }
     }
 
 }
