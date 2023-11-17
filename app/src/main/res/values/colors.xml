@@ -3,7 +3,14 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green">#10A139</color>
+    <color name="lightGreen">#32CD32</color>
     <color name="grayBG">#DCDCDC</color>
+    <color name="darkGray">#A9A9A9</color>
     <color name="blue">#1AA7EC</color>
+    <color name="darkBlue">#0000CC</color>
     <color name="yellow">#FCD12A</color>
+    <color name="red">#FF0000</color>
+    <color name="orange">#FF5349</color>
+    <color name="goldenYellow">#FFD700</color>
+
 </resources>

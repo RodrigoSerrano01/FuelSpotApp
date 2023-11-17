@@ -1,6 +1,7 @@
 package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -21,6 +22,8 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setContentView(binding.root)
 
         binding.loginLoginButton.setOnClickListener {
@@ -39,6 +42,8 @@ class RegisterActivity : AppCompatActivity() {
         val addPostoText = findViewById<TextView>(R.id.register_addPostoText)
         val addPostoButton = findViewById<TextView>(R.id.register_addPostoButton)
         val confirmButton = findViewById<AppCompatButton>(R.id.login_loginButton)
+        val logOutButton = findViewById<AppCompatButton>(R.id.bt_signOut)
+        val profileButton = findViewById<AppCompatButton>(R.id.profileButton)
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
@@ -83,6 +88,6 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(intent)
             }
         }
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this);
     }
 }

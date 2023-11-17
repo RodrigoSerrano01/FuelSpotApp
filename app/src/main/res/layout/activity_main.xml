@@ -16,11 +16,16 @@
         tools:layout_editor_absoluteY="-47dp" />
 -->
 
+    <!-- Lista de postos -->
+
+
     <include
         android:id="@+id/header_layout"
         layout="@layout/header_layout"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/map"
+        tools:layout_editor_absoluteX="0dp" />
 
     <fragment
         android:id="@+id/map"
@@ -32,43 +37,22 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.09"
-        tools:context=".MapsActivity" />
-
-    <!-- Lista de postos -->
-
-    <!-- <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        app:layout_constraintBottom_toTopOf="@+id/appVersion"
-
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/map"
-        app:layout_constraintVertical_bias="0.1">
-
-        &lt;!&ndash; Conteúdo do item_spot.xml &ndash;&gt;
-        <include
-            android:id="@+id/include3"
-            layout="@layout/item_spot" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
--->
+        app:layout_constraintVertical_bias="0.099"
+        tools:context=".MapsActivity"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/appVersion"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/map"
         app:layout_constraintVertical_bias="0.0"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_spot"
-        >
+        tools:listitem="@layout/item_spot">
 
     </androidx.recyclerview.widget.RecyclerView>
 
@@ -98,6 +82,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/green"
         android:padding="15dp"
+        android:visibility="gone"
         android:text="@string/sairText"
         android:textAllCaps="false"
         android:textColor="@color/black"

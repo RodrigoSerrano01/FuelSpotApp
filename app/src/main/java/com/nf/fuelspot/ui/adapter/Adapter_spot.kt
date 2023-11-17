@@ -29,7 +29,6 @@ class Adapter_spot(
         val posto = listaPosto[position]
         holder.vincula(posto)
 
-
     }
 
     class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {

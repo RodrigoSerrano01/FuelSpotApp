@@ -1,5 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.pm.ActivityInfo
 import android.location.Geocoder
 import android.os.Bundle
 import android.util.Log
@@ -15,15 +16,20 @@ class RegisterSpotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterSpotBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setContentView(binding.root)
 
+
+         val logOutButton = findViewById<Button>(R.id.bt_signOut)
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
+        val profileButton = findViewById<Button>(R.id.profileButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
         val confirmButton = findViewById<TextView>(R.id.login_loginButton)
 
 
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
 
         val registerCep = findViewById<TextView>(R.id.register_cepText)
         val cep = binding.registerCep.text
