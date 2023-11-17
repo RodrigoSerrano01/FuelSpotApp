@@ -50,7 +50,8 @@ class UserService {
                             "nome" to user.getUserName(),
                             "e-mail" to user.getUserEmail(),
                             "senha" to user.getUserPassword(),
-                            "userId" to user.getUserId()
+                            "userId" to user.getUserId(),
+                            "proprietário" to user.getUserOwner()
                         )
 
                         database.collection("Usuários")
