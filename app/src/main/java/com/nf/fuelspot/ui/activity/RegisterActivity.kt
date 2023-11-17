@@ -1,6 +1,7 @@
 package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -22,6 +23,7 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(binding.root)
 
         binding.loginLoginButton.setOnClickListener {
@@ -36,6 +38,8 @@ class RegisterActivity : AppCompatActivity() {
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
+        val logOutButton = findViewById<Button>(R.id.bt_signOut)
+        val profileButton = findViewById<Button>(R.id.profileButton)
 
         checkboxMeat.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -75,7 +79,7 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
     }
 
     fun createUser(isOwner: Boolean): UserController {

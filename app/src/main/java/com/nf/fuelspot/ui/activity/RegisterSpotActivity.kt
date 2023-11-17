@@ -1,5 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -15,11 +16,15 @@ class RegisterSpotActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterSpotBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(binding.root)
 
         val userName = intent.getStringExtra("nome")
 
-        val registerButton = findViewById<Button>(R.id.registerButton)
+
+        val logOutButton = findViewById<Button>(R.id.bt_signOut)
+        val profileButton = findViewById<Button>(R.id.profileButton)
+            val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
         val confirmButton = findViewById<TextView>(R.id.login_loginButton)
@@ -29,7 +34,7 @@ class RegisterSpotActivity : AppCompatActivity() {
             GasStationService.gasAddDatabase(posto, it, userName)
         }
 
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
     }
 
     fun createGasStation(): PostoController {
