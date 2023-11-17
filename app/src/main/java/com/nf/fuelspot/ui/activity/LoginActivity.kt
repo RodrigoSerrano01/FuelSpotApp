@@ -1,6 +1,7 @@
 package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -26,8 +27,12 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
         setContentView(binding.root)
 
+        val logOutButton = findViewById<Button>(R.id.bt_signOut)
+        val profileButton = findViewById<Button>(R.id.profileButton)
         val loginRegisterButton = findViewById<Button>(R.id.login_registerButton)
         val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
@@ -82,7 +87,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this);
     }
 
 

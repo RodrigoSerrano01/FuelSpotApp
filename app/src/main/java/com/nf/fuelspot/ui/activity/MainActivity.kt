@@ -1,6 +1,7 @@
 package com.nf.fuelspot.ui.activity
 
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -33,11 +34,18 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(binding.root)
 
         val registerButton = findViewById<Button>(R.id.registerButton)
+        val logOutButton = findViewById<Button>(R.id.bt_signOut)
         val loginButton = findViewById<Button>(R.id.loginButton)
+        val profileButton = findViewById<Button>(R.id.profileButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
+
+
+
+
 
 
 
@@ -116,7 +124,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        HeaderActivity.createListener(registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
 
 
     }

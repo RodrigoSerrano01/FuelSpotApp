@@ -6,4 +6,17 @@
     </style>
 
     <style name="Theme.FuelSpot" parent="Base.Theme.FuelSpot" />
+
+
+    <style name="RatingBar" parent="Theme.AppCompat">
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/goldenYellow</item>
+    </style>
+    <style name="RatingBar_Comment" parent="Theme.AppCompat"
+        style="?android:attr/ratingBarStyleSmall"
+
+        >
+        <item name="colorControlNormal">@color/white</item>
+        <item name="colorControlActivated">@color/goldenYellow</item>
+    </style>
 </resources>

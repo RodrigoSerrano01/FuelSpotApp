@@ -8,6 +8,8 @@
     <string name="senhaLabel">Senha</string>
     <string name="addPostoLabel">Adicionar Posto</string>
     <string name="souProprietarioLabel">Sou Proprietário</string>
+    <string name="precoErradoLabel">Posto estava com algum preço errado</string>
+    <string name="bemAtendidoLabel">Fui bem atendido</string>
     <string name="confirmarSenhaLabel">Confirmar Senha</string>
     <string name="cnpjLabel">CNPJ</string>
     <string name="cepLabel">Cep</string>
@@ -21,6 +23,7 @@
     <!--Texts-->
     <string name="forgotPasswordText">Esqueceu Sua Senha?</string>
     <string name="noAccountText">Caso Não Tenha Uma Conta</string>
+    <string name="avaliarPostoText">Avaliar Posto</string>
     <string name="confirmarText">Confirmar</string>
     <string name="cadastroText">Cadastro</string>
     <string name="addPostoText">Cadastro de Posto</string>
@@ -33,10 +36,13 @@
     <string name="gasolinaComumText">Gasolina Comum</string>
     <string name="gasolinaAditivadaText">Gasolina Aditivada</string>
     <string name="visualizarText">Visualizar</string>
+    <string name="clientesDizendoText">Oque os clientes estão dizendo?</string>
+    <string name="voltarText">Voltar</string>
 
     <!--Placeholders-->
     <string name="placeholderEmail">example@example.com</string>
-    <string name="placeholderName">Joe Doe</string>
+    <string name="reviewPlaceholderText">Digite aqui algum comentário</string>
+    <string name="placeholderName">John Doe</string>
     <string name="hintSenha">Senha</string>
     <string name="title_activity_maps">MapsActivity</string>
 </resources>
