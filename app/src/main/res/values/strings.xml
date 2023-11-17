@@ -15,6 +15,8 @@
     <string name="cidadeLabel">Cidade</string>
     <string name="ruaLabel">Rua</string>
     <string name="numeroLabel">Número</string>
+    <string name="postoNomeLabel">Nome do Posto</string>
+
 
     <!--Texts-->
     <string name="forgotPasswordText">Esqueceu Sua Senha?</string>
@@ -24,9 +26,13 @@
     <string name="addPostoText">Cadastro de Posto</string>
     <string name="loginText">Login</string>
     <string name="sairText">Sair</string>
-    <string name="profileText">Editar Perfil</string>
+    <string name="editProfileText">Editar Perfil</string>
+    <string name="profileText">Perfil</string>
     <string name="checkSpotText">Meus Postos</string>
     <string name="checkReviewsText">Minhas Avaliações</string>
+    <string name="gasolinaComumText">Gasolina Comum</string>
+    <string name="gasolinaAditivadaText">Gasolina Aditivada</string>
+    <string name="visualizarText">Visualizar</string>
 
     <!--Placeholders-->
     <string name="placeholderEmail">example@example.com</string>
