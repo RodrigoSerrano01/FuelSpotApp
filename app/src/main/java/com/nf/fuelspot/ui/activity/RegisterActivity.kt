@@ -12,6 +12,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.databinding.ActivityRegisterBinding
+import com.nf.fuelspot.service.OwnerService
 import com.nf.fuelspot.service.UserService
 
 class RegisterActivity : AppCompatActivity() {
@@ -24,15 +25,8 @@ class RegisterActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.loginLoginButton.setOnClickListener {
-
-            val nome = binding.registerNome.text.toString()
-            val email = binding.registerEmailLogin.text.toString()
-            val senha = binding.registerPassword.text.toString()
-            val senhaConfirmada = binding.registerConfirmPassword.text.toString()
-
-            val user = UserController()
-            user.createUser(nome, email, senha)
-            UserService.userAddDataBase(user, senhaConfirmada, it)
+            val user = createUser(false)
+            UserService.userAddDataBase(user, binding.registerConfirmPassword.text.toString(), it)
         }
 
         val checkboxMeat = findViewById<CheckBox>(R.id.checkbox_meat)
@@ -67,22 +61,30 @@ class RegisterActivity : AppCompatActivity() {
         val addSpotButton = findViewById<TextView>(R.id.register_addPostoButton)
 
         addSpotButton.setOnClickListener {
+            val user = createUser(true)
+            UserService.userAddDataBase(user, binding.registerConfirmPassword.text.toString(), it)
 
-            val nome = binding.registerNome.text.toString()
-            val email = binding.registerEmailLogin.text.toString()
-            val senha = binding.registerPassword.text.toString()
-            val senhaConfirmada = binding.registerConfirmPassword.text.toString()
-
-            val user = UserController()
-            user.createUser(nome, email, senha)
-            UserService.userAddDataBase(user, senhaConfirmada, it)
-            if (user.getUserName().isNotEmpty() || user.getUserEmail().isNotEmpty() ||
-                user.getUserPassword().isNotEmpty() || senhaConfirmada.isNotEmpty()
-            ) {
+            val successfulOwnerAddition = OwnerService.ownerAddDataBase(
+                user,
+                binding.registerConfirmPassword.text.toString(), it
+            )
+            if (successfulOwnerAddition) {
                 val intent = Intent(this, RegisterSpotActivity::class.java)
+                intent.putExtra("nome", user.getUserName())
                 startActivity(intent)
             }
         }
+
         HeaderActivity.createListener(registerButton, loginButton, textTittle, this);
+    }
+
+    fun createUser(isOwner: Boolean): UserController {
+        val nome = binding.registerNome.text.toString()
+        val email = binding.registerEmailLogin.text.toString()
+        val senha = binding.registerPassword.text.toString()
+
+        val user = UserController()
+        user.createUser(nome, email, senha, isOwner)
+        return user
     }
 }

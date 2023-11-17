@@ -11,6 +11,7 @@ abstract class Usuario {
     protected var email: String = ""
     protected var senha: String = ""
     protected var id: String = ""
+    protected var owner: Boolean = false
     //private lateinit var posto: Posto
 
 }
