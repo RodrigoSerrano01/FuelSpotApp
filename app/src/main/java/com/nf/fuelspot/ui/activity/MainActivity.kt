@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
          *
          **/
         val user1: UserController = UserController()
-        user1.createUser("teste123", "123@gmail.com", "12345678")
+//        user1.createUser("teste123", "123@gmail.com", "12345678")
         //UserService.userAddDataBase(user1)
 
 

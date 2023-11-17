@@ -17,11 +17,12 @@ class UserController : Usuario() {
         return this
     }
 
-    fun createUser(name: String, email: String, senha: String) {
+    fun createUser(name: String, email: String, senha: String, owner: Boolean) {
         this.name = name
         this.email = email
         this.senha = encriptaSenha(senha)
         this.id = generateId()
+        this.owner = owner
     }
 
     fun updateUserName(name: String) {
@@ -47,6 +48,10 @@ class UserController : Usuario() {
 
     fun getUserId(): String {
         return this.id
+    }
+
+    fun getUserOwner(): Boolean {
+        return this.owner
     }
 
     fun encriptaSenha(senha: String): String {
