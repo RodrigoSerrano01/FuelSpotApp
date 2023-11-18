@@ -27,6 +27,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_signOut"
+        android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/red"
@@ -49,6 +50,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/profileButton"
+        android:clickable="false"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:background="@color/green"
@@ -71,6 +73,7 @@
     <!--Cadastro Button-->
 
     <androidx.appcompat.widget.AppCompatButton
+        android:clickable="true"
         android:id="@+id/registerButton"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -79,7 +82,7 @@
         android:paddingEnd="15dp"
         android:text="@string/cadastroText"
         android:textAllCaps="true"
-        android:visibility="gone"
+        android:visibility="visible"
 
         android:textColor="#FFF"
         android:textSize="8sp"
@@ -94,6 +97,7 @@
     <!--Login Button-->
 
     <androidx.appcompat.widget.AppCompatButton
+        android:clickable="true"
         android:id="@+id/loginButton"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -103,7 +107,7 @@
         android:text="@string/loginText"
         android:textAllCaps="true"
         android:textColor="#FFF"
-        android:visibility="gone"
+        android:visibility="visible"
 
 
         android:textSize="8sp"

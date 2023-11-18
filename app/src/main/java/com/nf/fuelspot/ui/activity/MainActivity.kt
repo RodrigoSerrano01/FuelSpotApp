@@ -1,5 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -15,13 +16,18 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.Source
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.GasStationController
 import com.nf.fuelspot.controller.MapController
 import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.databinding.ActivityMainBinding
+import com.nf.fuelspot.service.GasStationService
 import com.nf.fuelspot.utils.RecyclerViewGasStationUtil
 import java.math.BigDecimal
+import kotlin.math.log
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -46,8 +52,11 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-
-
+        /**
+         *
+         *  Teste de consulta no banco de posto
+         *
+         **/
 
 
 
@@ -106,13 +115,13 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
          * Como só temos a tela principal, com login e cadastre-se aparecendo mesmo com o usuário
          * já estando cadastrado, ele está sendo redirecionado por um método na activity de login
          * TODO arrumar essa lógica após termos as duas telas mapa
-         */
-        binding.btSignOut.setOnClickListener {
-            FirebaseAuth.getInstance().signOut()
-            val voltarLogin = Intent(this, LoginActivity::class.java)
-            startActivity(voltarLogin)
-            finish()
-        }
+//         */
+//        binding.btSignOut.setOnClickListener {
+//            FirebaseAuth.getInstance().signOut()
+//            val voltarLogin = Intent(this, LoginActivity::class.java)
+//            startActivity(voltarLogin)
+//            finish()
+//        }
 
 
         /**
@@ -134,66 +143,20 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
 
-        val gas1: GasStationController = GasStationController()
-        gas1.createGasStation(
-            this,"teste", BigDecimal("10.00"), BigDecimal("10.00"),
-            "Herval do Oeste, São tomé, viamão RS, 316", BigDecimal("10.00"), BigDecimal("10.00"))
-
-        val gas2: GasStationController = GasStationController()
-        gas2.createGasStation(
-            this,"casa juan", BigDecimal("10.00"), BigDecimal("10.00"),
-            "91370-170", BigDecimal("10.00"), BigDecimal("10.00"))
-
-        val gasList: MutableList<GasStationController> = mutableListOf<GasStationController>()
-        gasList.add(gas1)
-        gasList.add(gas2)
-
-        RecyclerViewGasStationUtil.addGasStationToRicylerView(recyclerView, this, gasList)
-
-        Log.d(toString(),gas1.getStringCoordinate())
-
-        var testeMap: MapController = MapController()
-        val gasLocation = LatLng(gas1.getGasLat(),gas1.getGasLong())
-
-        val gasLocation1 = LatLng(gas2.getGasLat(),gas2.getGasLong())
-
-
-
-        if (testeMap.permissionTest(this, this)) {
-            testeMap.addGasStationMarker(googleMap, gasLocation, gas1)
-            testeMap.addGasStationMarker(googleMap, gasLocation1, gas2)
-
-        } else {
-            recreate();
+        var testeMap = MapController()
+        GasStationService.gasConsult(this) { lista ->
+            RecyclerViewGasStationUtil.addGasStationToRicylerView(recyclerView, this, lista)
+            if (testeMap.permissionTest(this, this)) {
+                lista.forEach {
+                    val gasLocation = LatLng(it.getGasLat(),it.getGasLong())
+                    testeMap.addGasStationMarker(googleMap, gasLocation, it)
+                }
+            } else {
+                recreate();
+            }
         }
 
-
-//        if (ActivityCompat.checkSelfPermission(
-//                this,
-//                Manifest.permission.ACCESS_FINE_LOCATION
-//            ) == PackageManager.PERMISSION_GRANTED
-//        ) {
-//            fusedLocationClient.lastLocation.addOnSuccessListener { location ->
-//                location?.let {
-//                    val userLocation = LatLng(location.latitude, location.longitude)
-//                    //val userLocation = LatLng(-30.12067486761821, -51.07503957487643)
-//                    mMap.clear()
-//                    mMap.addMarker(
-//                        MarkerOptions().position(userLocation).title("Sua Localização Atual")
-//                    )
-//                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(userLocation, 15f))
-//                }
-//            }
-//        } else {
-//            ActivityCompat.requestPermissions(
-//                this,
-//                arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),
-//                1
-//            )
-//        }
     }
-
-
 }
 
 

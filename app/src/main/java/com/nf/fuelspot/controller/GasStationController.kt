@@ -103,6 +103,10 @@ class GasStationController : Posto() {
 
     }
 
+    override fun toString(): String {
+        return "${name}, ${price},${score}, ${address} "
+    }
+
 
 
 }
