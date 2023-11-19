@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(binding.root)
 
+        val positionToScroll = 5 // Substitua pelo índice da posição desejada
 
 
         val registerButton = findViewById<Button>(R.id.registerButton)
@@ -47,91 +48,17 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         val textTittle = findViewById<TextView>(R.id.appTittle)
 
 
-
-
-
-        /**
-         *
-         *  Teste de consulta no banco de posto
-         *
-         **/
-
-
-
-
-
-        /**
-         *
-         *  Teste de criação de usuario
-         *
-         **/
-        val user1: UserController = UserController()
-//        user1.createUser("teste123", "123@gmail.com", "12345678")
-        //UserService.userAddDataBase(user1)
-
-
-//        /**
-//         *
-//         *  Teste de criação de posto
-//         *
-//         **/
-//        val gas1: GasStationController = GasStationController()
-//        gas1.createGasStation(
-//            "teste", BigDecimal("10.00"), BigDecimal("10.00"),
-//            "Rua 1", BigDecimal("10.00"), BigDecimal("10.00")
-//        )
-//
-//        val gas2: GasStationController = GasStationController()
-//        gas2.createGasStation(
-//            this,"teste2", BigDecimal("10.00"), BigDecimal("10.00"),
-//            "Rua 1", BigDecimal("10.00"), BigDecimal("10.00"))
-////
-//        val gasList: MutableList<GasStationController> = mutableListOf<GasStationController>()
-////
-////        gasList.add(gas1)
-//        gasList.add(gas2)
-//
-//        RecyclerViewGasStationUtil.addGasStationToRicylerView(recyclerView, this, gasList)
-
-
-        /**
-         *
-         *  Teste de criação de Mapa
-         *
-         **/
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
-        val endereco = "Herval do Oeste, São tomé, viamão RS"
-
-
-
-
-        /**
-         * Como só temos a tela principal, com login e cadastre-se aparecendo mesmo com o usuário
-         * já estando cadastrado, ele está sendo redirecionado por um método na activity de login
-         * TODO arrumar essa lógica após termos as duas telas mapa
-//         */
-//        binding.btSignOut.setOnClickListener {
-//            FirebaseAuth.getInstance().signOut()
-//            val voltarLogin = Intent(this, LoginActivity::class.java)
-//            startActivity(voltarLogin)
-//            finish()
-//        }
-
-
-        /**
-         *
-         *  teste função de bottons
-         *
-         **/
-
 
 
 
         HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
+
+
 
 
     }
@@ -140,6 +67,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+
 
         var testeMap = MapController()
         GasStationService.gasConsult(this) { lista ->

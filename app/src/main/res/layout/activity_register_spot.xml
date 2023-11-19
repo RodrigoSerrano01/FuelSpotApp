@@ -290,6 +290,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkbox_meat" />
 
+    <RadioButton
+        android:id="@+id/confirm_CPFradioButton"
+        android:layout_width="31dp"
+        android:layout_height="28dp"
+        app:layout_constraintBottom_toBottomOf="@+id/register_cep"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.012"
+        app:layout_constraintStart_toEndOf="@+id/register_cep"
+        app:layout_constraintTop_toBottomOf="@+id/register_cepText" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
