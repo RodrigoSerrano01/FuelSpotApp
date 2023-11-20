@@ -38,7 +38,6 @@ class MapController {
 
         val mMap= googleMap
 
-
         mMap.addMarker(
             MarkerOptions().position(location).title(gasStationController.getGasName())
         )

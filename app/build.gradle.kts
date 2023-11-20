@@ -60,4 +60,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-analytics")
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.11")
+    implementation ("com.google.code.gson:gson:2.8.9")
+
 }

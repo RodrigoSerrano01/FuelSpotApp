@@ -8,10 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.GasStationController
+import com.nf.fuelspot.databinding.ItemSpotBinding
+
 
 
 class Adapter_spot(
@@ -67,3 +68,4 @@ class Adapter_spot(
 
 }
 }
+

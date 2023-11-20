@@ -106,7 +106,7 @@ class GasStationService {
 //        return gasList
 //    }
 
-        fun gasConsult(context: Context, callback: (List<GasStationController>) -> Unit) {
+        fun gasConsult(context: Context, callback: (MutableList<GasStationController>) -> Unit) {
             val gasList: MutableList<GasStationController> = mutableListOf()
             val db = Firebase.firestore
 
@@ -123,9 +123,9 @@ class GasStationService {
                             BigDecimal("10"),
                             BigDecimal("10"),
                             aux,
-                            BigDecimal("10"),
-                            BigDecimal("10")
-                        )
+                            "",
+                            "")
+
                         gasList.add(gasAux)
                     }
 
@@ -134,7 +134,7 @@ class GasStationService {
                 .addOnFailureListener { exception ->
                     Log.d(ContentValues.TAG, "Error getting documents: ", exception)
                     Toast.makeText(context, "Não funcionou", Toast.LENGTH_SHORT).show()
-                    callback(emptyList()) // Chama o callback com uma lista vazia em caso de falha
+                    //callback(gasList()) // Chama o callback com uma lista vazia em caso de falha
                 }
         }
     }

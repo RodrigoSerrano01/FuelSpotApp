@@ -26,8 +26,8 @@ abstract class Posto(
     protected var price: BigDecimal = BigDecimal.ZERO,
     protected var score: BigDecimal = BigDecimal.ZERO,
     protected var address: String = "",
-    protected var distance: BigDecimal = BigDecimal.ZERO,
-    protected var distanceTime: BigDecimal = BigDecimal.ZERO,
+    protected var distance: String = "",
+    protected var distanceTime: String = "",
     protected var longitude: BigDecimal = BigDecimal.ZERO,
     protected var latitude: BigDecimal = BigDecimal.ZERO
 //    protected var longitude: Double = 0.0,
