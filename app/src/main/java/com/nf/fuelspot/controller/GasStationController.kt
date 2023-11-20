@@ -2,6 +2,7 @@ package com.nf.fuelspot.controller
 
 import android.content.Context
 import android.location.Geocoder
+import android.util.Log
 import com.nf.fuelspot.model.Posto
 import java.math.BigDecimal
 import java.util.Locale
@@ -23,14 +24,15 @@ import java.util.Locale
 class GasStationController : Posto() {
      private lateinit var context:Context
 
+
     fun createGasStation(
         context: Context,
         name:String,
         price:BigDecimal,
         score:BigDecimal,
         address:String,
-        distance: BigDecimal,
-        distanceTime:BigDecimal){
+        distance: String,
+        distanceTime:String){
         this.name = name
         this.price = price
         this.score = score
@@ -39,6 +41,9 @@ class GasStationController : Posto() {
         this.distanceTime= distanceTime
         coordinatesByAdrres(context)
     }
+
+
+
 
     fun updateGasName(name:String){
         this.name = name
@@ -53,10 +58,10 @@ class GasStationController : Posto() {
     fun updateGasAddress(address:String){
         this.address = address
     }
-    fun updateGasDistance(distance:BigDecimal){
+    fun updateGasDistance(distance:String){
         this.distance = distance
     }
-    fun updateGasDistanceTime(distanceTime:BigDecimal){
+    fun updateGasDistanceTime(distanceTime:String){
         this.distanceTime= distanceTime
     }
 
@@ -74,10 +79,18 @@ class GasStationController : Posto() {
         return this.address
     }
     fun getGasDistance():String{
-        return this.distance.toPlainString()
+        return this.distance
     }
     fun getGasDistanceTime():String{
-        return this.distanceTime.toPlainString()
+       // Log.i("LOG", "!!D: ${this.distanceTime}")
+        return this.distanceTime
+    }
+
+    fun setGasDistance(distance: String){
+         this.distance = distance
+    }
+    fun setGasDistanceTime(distanceTime: String){
+         this.distanceTime =distanceTime
     }
     fun getGasLong():Double{
         return this.longitude.toDouble()
@@ -85,6 +98,8 @@ class GasStationController : Posto() {
     fun getGasLat():Double{
         return this.latitude.toDouble()
     }
+
+
 
     fun getStringCoordinate():String{
         return "Longitude:${this.longitude} Latitude:${this.latitude}"
@@ -101,6 +116,10 @@ class GasStationController : Posto() {
 
 
 
+    }
+
+    override fun toString(): String {
+        return "${name}, ${price},${score}, ${address} "
     }
 
 
