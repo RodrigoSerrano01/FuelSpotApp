@@ -42,7 +42,7 @@ class APIDistanceUtil {
         latAtual: BigDecimal,
         LongAtual: BigDecimal,
         gas: GasStationController
-    ){
+    ):Boolean{
 
 
     val url: okhttp3.HttpUrl = okhttp3.HttpUrl.Builder()
@@ -53,7 +53,7 @@ class APIDistanceUtil {
         .addQueryParameter("destinations", "${gas.getGasLat()},${gas.getGasLong()}")
         .addQueryParameter("key", "${apiKey}")
         .build()
-        Log.i("LOG", "!!!!! = ${url}")
+      //  Log.i("LOG", "!!!!! = ${url}")
     val request = Request.Builder()
         .url(url).get()  // Converte Uri para String
         .build()
@@ -78,6 +78,7 @@ class APIDistanceUtil {
 //        }
 
         override fun onResponse(call: Call, response: Response) {
+
             if (response.isSuccessful) {
                 val responseData = response.body?.string()
                 val gson = Gson()
@@ -92,17 +93,19 @@ class APIDistanceUtil {
                         gas.setGasDistance(distanceText)
                         gas.setGasDistanceTime(durationText)
                         // Faça o que quiser com as variáveis
-                       // Log.i("LOG", "!!Distance Text: ${gas.getGasDistance()}")
-                       // Log.i("LOG", "!!Duration Text: $durationText")
+                        Log.i("LOG", "!!Distance Text: ${gas.getGasDistance()}")
+                        Log.i("LOG", "!!Duration Text: ${gas.getGasDistanceTime()}")
                     }
                 }
 
             } else {
                 Log.e("LOG", "Erro na solicitação: ${response.code}")
+
             }
+
         }
     })
-
+return true
     }
     }
 }

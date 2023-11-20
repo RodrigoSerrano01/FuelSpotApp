@@ -20,6 +20,7 @@ import com.nf.fuelspot.service.GasStationService
 import com.nf.fuelspot.utils.APIDistanceUtil
 import com.nf.fuelspot.utils.RecyclerViewGasStationUtil
 import java.math.BigDecimal
+import kotlin.concurrent.thread
 
 
 class MainActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -28,6 +29,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
+    private var LONGITUDE = BigDecimal(-30.12086083470527)
+    private var LATITUDE = BigDecimal(-51.07528734639126)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,51 +54,73 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
 
-        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(
+            logOutButton,
+            profileButton,
+            registerButton,
+            loginButton,
+            textTittle,
+            this
+        )
 
 
+        /**
+         * tentativa de calculo de distancia
+         * */
 
 
-/**
-* tentativa de calculo de distancia
-* */
-
-
-
-
-
-       // Log.i("LOG", "A Distancia é = ${url.toString()}")
+        // Log.i("LOG", "A Distancia é = ${url.toString()}")
     }
-
-
 
 
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
-        val long = BigDecimal(-30.0125097)
-        val lat = BigDecimal(-51.146238999999994)
+        val long = LONGITUDE
+        val lat = LATITUDE
 
 
         var testeMap = MapController()
+
         GasStationService.gasConsult(this) { lista ->
-
+            val totalCalls = lista.size
+            var completedCalls = 0
             if (testeMap.permissionTest(this, this)) {
-                lista.forEach {
-                    APIDistanceUtil.createData(this,lat,long,it)
+                do {
 
-                    val gasLocation = LatLng(it.getGasLat(),it.getGasLong())
-                    testeMap.addGasStationMarker(googleMap, gasLocation, it)
-                    Log.i("LOG", "!!D: ${it.getGasName()}")
+                lista.forEach {
+
+                    if(APIDistanceUtil.createData(this, lat, long, it)) {
+                        completedCalls++
+                    }
+
+                       // Log.i("LOG", "!!:${completedCalls}")
+                        val gasLocation = LatLng(it.getGasLat(), it.getGasLong())
+                        testeMap.addGasStationMarker(googleMap, gasLocation, it)
+
+                            if (completedCalls == totalCalls) {
+                                Thread.sleep(2000)
+                              //  Log.i("LOG", "!!Entrou:${completedCalls}")
+                                RecyclerViewGasStationUtil.addGasStationToRicylerView(
+                                    recyclerView,
+                                    this,
+                                    lista
+                                )
+                            }
+
+
                 }
+                }while (completedCalls != totalCalls)
             } else {
                 recreate();
             }
-            //Log.i("LOG", "!!D: ${lista.get(0).getGasDistance()}")
-            RecyclerViewGasStationUtil.addGasStationToRicylerView(recyclerView, this, lista)
-        }
-    }
-}
 
+
+            }
+
+    }
+
+
+}
 
 

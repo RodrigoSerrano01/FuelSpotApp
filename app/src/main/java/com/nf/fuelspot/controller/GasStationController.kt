@@ -24,6 +24,7 @@ import java.util.Locale
 class GasStationController : Posto() {
      private lateinit var context:Context
 
+
     fun createGasStation(
         context: Context,
         name:String,
@@ -40,6 +41,9 @@ class GasStationController : Posto() {
         this.distanceTime= distanceTime
         coordinatesByAdrres(context)
     }
+
+
+
 
     fun updateGasName(name:String){
         this.name = name
@@ -78,7 +82,7 @@ class GasStationController : Posto() {
         return this.distance
     }
     fun getGasDistanceTime():String{
-        Log.i("LOG", "!!D: ${this.distanceTime}")
+       // Log.i("LOG", "!!D: ${this.distanceTime}")
         return this.distanceTime
     }
 
@@ -94,6 +98,8 @@ class GasStationController : Posto() {
     fun getGasLat():Double{
         return this.latitude.toDouble()
     }
+
+
 
     fun getStringCoordinate():String{
         return "Longitude:${this.longitude} Latitude:${this.latitude}"
