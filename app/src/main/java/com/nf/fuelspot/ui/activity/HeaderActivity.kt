@@ -24,12 +24,12 @@ import com.nf.fuelspot.utils.ButtonActionsUtil
 
               ) {
 
-              logOutButton.setOnClickListener {
-
-                  ButtonActionsUtil.handleLogOutButtonClick(context)
-
-
-              }
+//              logOutButton.setOnClickListener {
+//
+//                  ButtonActionsUtil.handleLogOutButtonClick(context)
+//
+//
+//              }
 
               profileButton.setOnClickListener {
                   ButtonActionsUtil.handleProfileButtonClick(context)
