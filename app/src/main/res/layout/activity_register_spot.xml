@@ -122,9 +122,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/register_cep" />
 
+
+    <!--Bairro-->
+
     <com.santalu.maskara.widget.MaskEditText
         android:id="@+id/register_cep"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:backgroundTint="@color/green"
@@ -133,17 +136,54 @@
         android:inputType="number"
         android:textColor="#A9A9A9"
         app:layout_constraintBottom_toBottomOf="@+id/include"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/register_cnpj"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/register_cnpj"
         app:layout_constraintTop_toBottomOf="@+id/register_cnpj"
-        app:layout_constraintVertical_bias="0.024"
+        app:layout_constraintVertical_bias="0.023"
         app:mask="_____-___"
         app:maskCharacter="_"
         app:maskStyle="completable" />
 
 
+    <!--Preco-->
+
+
+
+    <TextView
+        android:id="@+id/register_precoText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/precoLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/register_preco"
+        app:layout_constraintEnd_toEndOf="@+id/register_preco"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/register_preco" />
+
+
+
+
+    <EditText
+        android:id="@+id/register_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="00.00"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toStartOf="@+id/register_cep"
+        app:layout_constraintHorizontal_bias="0.038"
+        app:layout_constraintStart_toStartOf="@+id/register_cnpj"
+        app:layout_constraintTop_toBottomOf="@+id/register_cnpj" />
+
     <!--Bairro-->
+
 
     <TextView
         android:id="@+id/register_bairroText"

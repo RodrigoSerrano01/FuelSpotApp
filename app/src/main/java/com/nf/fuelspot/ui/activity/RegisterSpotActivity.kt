@@ -39,6 +39,7 @@ class RegisterSpotActivity : AppCompatActivity() {
         binding.registerBairro.setEnabled(false)
         binding.registerCidade.setEnabled(false)
         binding.registerRua.setEnabled(false)
+        binding.registerNumero.setEnabled(false)
 
 
 
@@ -48,6 +49,8 @@ class RegisterSpotActivity : AppCompatActivity() {
                 binding.registerBairro.setEnabled(true)
                 binding.registerCidade.setEnabled(true)
                 binding.registerRua.setEnabled(true)
+                binding.registerNumero.setEnabled(true)
+
                 autoCompleteAddress();
             }
 
@@ -67,11 +70,13 @@ class RegisterSpotActivity : AppCompatActivity() {
         binding.registerBairro.setVisibility(View.VISIBLE)
         binding.registerCidade.setVisibility(View.VISIBLE)
         binding.registerRua.setVisibility(View.VISIBLE)
+        binding.registerNumero.setVisibility(View.VISIBLE)
     }
     fun setInvisible(){
         binding.registerBairro.setVisibility(View.GONE)
         binding.registerCidade.setVisibility(View.GONE)
         binding.registerRua.setVisibility(View.GONE)
+        binding.registerNumero.setVisibility(View.GONE)
     }
 
 
