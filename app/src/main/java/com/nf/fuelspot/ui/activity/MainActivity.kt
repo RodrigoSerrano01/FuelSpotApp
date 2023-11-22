@@ -1,18 +1,22 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.ContentValues.TAG
 import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.auth.FirebaseAuth
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.MapController
 import com.nf.fuelspot.databinding.ActivityMainBinding
@@ -20,6 +24,7 @@ import com.nf.fuelspot.service.GasStationService
 import com.nf.fuelspot.utils.APIDistanceUtil
 import com.nf.fuelspot.utils.RecyclerViewGasStationUtil
 import java.math.BigDecimal
+import java.util.Objects
 import kotlin.concurrent.thread
 
 
@@ -38,12 +43,51 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityMainBinding.inflate(layoutInflater)
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(binding.root)
-
+        val user = FirebaseAuth.getInstance()
         val registerButton = findViewById<Button>(R.id.registerButton)
-        val logOutButton = findViewById<Button>(R.id.bt_signOut)
+
         val loginButton = findViewById<Button>(R.id.loginButton)
         val profileButton = findViewById<Button>(R.id.profileButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
+
+
+        /**
+         * teste header
+         */
+
+
+        val logOutButton = findViewById<Button>(R.id.bt_signOut)
+        val profButton = findViewById<Button>(R.id.profileButton)
+
+
+
+        if (user.currentUser != null) {
+            Log.d(TAG, "!!Logado")
+            profButton.setEnabled(true)
+            logOutButton.setEnabled(true)
+            profButton.setVisibility(View.VISIBLE)
+            logOutButton.setVisibility(View.VISIBLE)
+            loginButton.setEnabled(false)
+            registerButton.setEnabled(false)
+            loginButton.setVisibility(View.GONE)
+            registerButton.setVisibility(View.GONE)
+        }
+
+        logOutButton.setOnClickListener {
+            Log.d(TAG, "!!Logado não")
+            user.signOut()
+            profButton.setEnabled(false)
+            logOutButton.setEnabled(false)
+            profButton.setVisibility(View.GONE)
+            logOutButton.setVisibility(View.GONE)
+            loginButton.setEnabled(true)
+            registerButton.setEnabled(true)
+            loginButton.setVisibility(View.VISIBLE)
+            registerButton.setVisibility(View.VISIBLE)
+            //recreate();
+        }
+
+        //profileButton
 
 
         val mapFragment = supportFragmentManager

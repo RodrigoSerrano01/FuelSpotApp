@@ -9,11 +9,11 @@ import com.nf.fuelspot.ui.activity.ProfileActivity
 
 class ButtonActionsUtil {
     companion object {
-        fun handleLogOutButtonClick(context: Context) {
-            val intent = Intent(context, MainActivity::class.java)
-
-            context.startActivity(intent)
-        }
+//        fun handleLogOutButtonClick(context: Context) {
+//            val intent = Intent(context, MainActivity::class.java)
+//
+//            context.startActivity(intent)
+//        }
         fun handleProfileButtonClick(context: Context) {
             val intent = Intent(context, ProfileActivity::class.java)
             context.startActivity(intent)
@@ -29,6 +29,7 @@ class ButtonActionsUtil {
         }
 
         fun handleComeBackTextClick(context: Context) {
+
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }

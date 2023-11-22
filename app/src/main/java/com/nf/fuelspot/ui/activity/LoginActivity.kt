@@ -1,5 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.graphics.Color
@@ -14,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.nf.fuelspot.R
+import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.databinding.ActivityLoginBinding
 import java.security.MessageDigest
 import java.util.Objects
@@ -58,10 +60,16 @@ class LoginActivity : AppCompatActivity() {
                 snackbar.show()
             } else {
 
-                authentication.signInWithEmailAndPassword(email,hashPassword)
+
+
+
+                 authentication.signInWithEmailAndPassword(email,hashPassword)
 
                     .addOnCompleteListener { auth ->
                         if (auth.isSuccessful) {
+                            val userOn  = authentication.currentUser
+                            val id = userOn!!.getUid().toString()
+                            Log.d(TAG,"!!!!!${id},${userOn.metadata}")
                             mainActivityRedirect()
                         }
                     }.addOnFailureListener { exception ->
@@ -79,12 +87,14 @@ class LoginActivity : AppCompatActivity() {
                         snackbar.setBackgroundTint(Color.RED)
                         snackbar.show()
                     }
+
             }
         }
 
         loginRegisterButton.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
+
+//            val intent = Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
         }
 
         HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this);
