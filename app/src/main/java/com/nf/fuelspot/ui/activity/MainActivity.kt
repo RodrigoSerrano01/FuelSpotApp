@@ -9,7 +9,6 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.common.internal.safeparcel.SafeParcelable.NULL
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.GoogleMap
@@ -37,57 +36,32 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
     private var LONGITUDE = BigDecimal(-30.12086083470527)
     private var LATITUDE = BigDecimal(-51.07528734639126)
 
+    var user = FirebaseAuth.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT)
         setContentView(binding.root)
-        val user = FirebaseAuth.getInstance()
-        val registerButton = findViewById<Button>(R.id.registerButton)
 
-        val loginButton = findViewById<Button>(R.id.loginButton)
-        val profileButton = findViewById<Button>(R.id.profileButton)
-        val textTittle = findViewById<TextView>(R.id.appTittle)
-
-
-        /**
-         * teste header
-         */
-
-
-        val logOutButton = findViewById<Button>(R.id.bt_signOut)
-        val profButton = findViewById<Button>(R.id.profileButton)
-
+        var registerButton = findViewById<Button>(R.id.registerButton)
+        var logOutButton = findViewById<Button>(R.id.bt_signOut)
+        var loginButton = findViewById<Button>(R.id.loginButton)
+        var profileButton = findViewById<Button>(R.id.profileButton)
+        var textTittle = findViewById<TextView>(R.id.appTittle)
 
 
         if (user.currentUser != null) {
-            Log.d(TAG, "!!Logado")
-            profButton.setEnabled(true)
-            logOutButton.setEnabled(true)
-            profButton.setVisibility(View.VISIBLE)
-            logOutButton.setVisibility(View.VISIBLE)
-            loginButton.setEnabled(false)
-            registerButton.setEnabled(false)
-            loginButton.setVisibility(View.GONE)
-            registerButton.setVisibility(View.GONE)
+        profileButton.setEnabled(true)
+        logOutButton.setEnabled(true)
+        profileButton.setVisibility(View.VISIBLE)
+        logOutButton.setVisibility(View.VISIBLE)
+        loginButton.setEnabled(false)
+        registerButton.setEnabled(false)
+        loginButton.setVisibility(View.GONE)
+        registerButton.setVisibility(View.GONE)
         }
 
-        logOutButton.setOnClickListener {
-            Log.d(TAG, "!!Logado não")
-            user.signOut()
-            profButton.setEnabled(false)
-            logOutButton.setEnabled(false)
-            profButton.setVisibility(View.GONE)
-            logOutButton.setVisibility(View.GONE)
-            loginButton.setEnabled(true)
-            registerButton.setEnabled(true)
-            loginButton.setVisibility(View.VISIBLE)
-            registerButton.setVisibility(View.VISIBLE)
-            //recreate();
-        }
-
-        //profileButton
 
 
         val mapFragment = supportFragmentManager
@@ -95,6 +69,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
         mapFragment.getMapAsync(this)
 
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+
 
 
 
@@ -115,6 +90,8 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback {
 
         // Log.i("LOG", "A Distancia é = ${url.toString()}")
     }
+
+
 
 
     override fun onMapReady(googleMap: GoogleMap) {

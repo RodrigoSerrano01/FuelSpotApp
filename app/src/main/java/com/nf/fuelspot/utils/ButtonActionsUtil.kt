@@ -33,5 +33,15 @@ class ButtonActionsUtil {
             val intent = Intent(context, MainActivity::class.java)
             context.startActivity(intent)
         }
+        fun handleComeBackLogoutButton(context: Context) {
+
+            val intent = Intent(context, MainActivity::class.java)
+            context.startActivity(intent)
+        }
+        fun handleComeBackProfile(context: Context) {
+
+            val intent = Intent(context, ProfileActivity::class.java)
+            context.startActivity(intent)
+        }
     }
 }

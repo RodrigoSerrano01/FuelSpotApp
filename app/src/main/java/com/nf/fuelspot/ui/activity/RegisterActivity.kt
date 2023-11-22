@@ -79,7 +79,14 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(
+            logOutButton,
+            profileButton,
+            registerButton,
+            loginButton,
+            textTittle,
+            this
+        )
     }
 
     fun createUser(isOwner: Boolean): UserController {

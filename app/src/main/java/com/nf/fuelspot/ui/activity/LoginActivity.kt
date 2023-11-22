@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,13 +14,10 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.FirebaseNetworkException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
-import com.google.firebase.auth.FirebaseAuthInvalidUserException
 import com.nf.fuelspot.R
-import com.nf.fuelspot.controller.UserController
 import com.nf.fuelspot.databinding.ActivityLoginBinding
 import java.security.MessageDigest
 import java.util.Objects
-import kotlin.math.log
 
 class LoginActivity : AppCompatActivity() {
 
@@ -93,11 +91,18 @@ class LoginActivity : AppCompatActivity() {
 
         loginRegisterButton.setOnClickListener {
 
-//            val intent = Intent(this, RegisterActivity::class.java)
-//            startActivity(intent)
+            val intent = Intent(this, RegisterActivity::class.java)
+            startActivity(intent)
         }
 
-        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this);
+        HeaderActivity.createListener(
+            logOutButton,
+            profileButton,
+            registerButton,
+            loginButton,
+            textTittle,
+            this
+        )
     }
 
 
