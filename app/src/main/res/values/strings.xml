@@ -16,6 +16,7 @@
     <string name="bairroLabel">Bairro</string>
     <string name="cidadeLabel">Cidade</string>
     <string name="ruaLabel">Rua</string>
+    <string name="precoLabel">Preço</string>
     <string name="numeroLabel">Número</string>
     <string name="postoNomeLabel">Nome do Posto</string>
 
@@ -33,7 +34,7 @@
     <string name="profileText">Perfil</string>
     <string name="checkSpotText">Meus Postos</string>
     <string name="checkReviewsText">Minhas Avaliações</string>
-    <string name="gasolinaComumText">Gasolina Comum</string>
+    <string name="gasolinaComumText">Preço Gasolina</string>
     <string name="gasolinaAditivadaText">Gasolina Aditivada</string>
     <string name="visualizarText">Visualizar</string>
     <string name="clientesDizendoText">Oque os clientes estão dizendo?</string>
