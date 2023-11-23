@@ -1,6 +1,7 @@
 package com.nf.fuelspot.controller
 
 import com.nf.fuelspot.model.Posto
+import java.math.BigDecimal
 import java.util.UUID
 
 class PostoController: Posto() {
@@ -11,7 +12,8 @@ class PostoController: Posto() {
         bairro: String,
         cidade: String,
         rua: String,
-        numero: String
+        numero: String,
+        price: BigDecimal
     ) {
         this.name = name
         this.cnpj = cnpj
@@ -21,6 +23,7 @@ class PostoController: Posto() {
         this.rua = rua
         this.numero = numero
         this.id = generateId()
+        this.price = price
     }
 
     fun getPostoName(): String {
@@ -53,6 +56,14 @@ class PostoController: Posto() {
 
     fun getPostoId(): String {
         return this.id
+    }
+
+    fun getPostoPrice():BigDecimal {
+        return this.price
+    }
+
+    fun setPostoValorPrice(price: BigDecimal) {
+        this.price = price
     }
 
     fun generateId(): String {

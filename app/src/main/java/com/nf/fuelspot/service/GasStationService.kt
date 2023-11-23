@@ -14,6 +14,7 @@ import com.google.firebase.ktx.Firebase
 import com.nf.fuelspot.controller.GasStationController
 import com.nf.fuelspot.controller.PostoController
 import java.math.BigDecimal
+import java.util.Objects
 
 class GasStationService {
 
@@ -25,7 +26,7 @@ class GasStationService {
             if (posto.getPostoName().isEmpty() || posto.getPostoCnpj().isEmpty() ||
                 posto.getPostoCep().isEmpty() || posto.getPostoBairro().isEmpty() ||
                 posto.getPostoRua().isEmpty() || posto.getPostoNumero().isEmpty() ||
-                posto.getPostoCidade().isEmpty()
+                posto.getPostoCidade().isEmpty() || Objects.nonNull(posto.getPostoPrice())
             ) {
                 val snackbar = Snackbar.make(
                     it, "Todos os campos precisam estar preenchidos!", Snackbar.LENGTH_SHORT
@@ -33,6 +34,16 @@ class GasStationService {
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.show()
             } else {
+                if (posto.getPostoPrice().toDouble() <= 0.0) {
+                    val zeroBigDecimal = BigDecimal("0.0")
+                    posto.setPostoValorPrice(zeroBigDecimal)
+                    val snackbar = Snackbar.make(
+                        it, "Gasolina recebeu o valor de R$0,00!", Snackbar.LENGTH_SHORT
+                    )
+                    snackbar.setBackgroundTint(Color.YELLOW)
+                    snackbar.setTextColor(Color.BLACK)
+                    snackbar.show()
+                }
                 val postoMap = hashMapOf(
                     "nome" to posto.getPostoName(),
                     "cnpj" to posto.getPostoCnpj(),
@@ -42,6 +53,7 @@ class GasStationService {
                     "numero" to posto.getPostoNumero(),
                     "cidade" to posto.getPostoCidade(),
                     "postoId" to posto.getPostoId(),
+                    "valor" to posto.getPostoPrice()
                 )
 
                 database.collection("Postos")
@@ -114,13 +126,16 @@ class GasStationService {
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        val aux: String = ("${document.get("cidade")}, ${document.get("numero")}, ${document.get("rua")},${document.get("cep")},${document.get("bairro")} ")
+                        val aux: String =
+                            ("${document.get("cidade")}, ${document.get("numero")}, ${document.get("rua")},${
+                                document.get("cep")
+                            },${document.get("bairro")} ")
 
                         val gasAux = GasStationController()
                         gasAux.createGasStation(
                             context,
                             document.get("nome").toString(),
-                            BigDecimal("10"),
+                            BigDecimal("valor"),
                             BigDecimal("10"),
                             aux,
                             "",
