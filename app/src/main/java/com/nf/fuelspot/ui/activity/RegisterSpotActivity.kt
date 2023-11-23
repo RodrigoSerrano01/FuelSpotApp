@@ -1,5 +1,6 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.location.Geocoder
 import android.os.Bundle
@@ -60,6 +61,8 @@ class RegisterSpotActivity : AppCompatActivity() {
         binding.loginLoginButton.setOnClickListener {
             val posto = createGasStation()
             GasStationService.gasAddDatabase(posto, it, userName)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
         HeaderActivity.createListener(

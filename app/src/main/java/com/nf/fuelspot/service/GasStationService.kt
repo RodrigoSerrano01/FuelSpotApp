@@ -1,6 +1,7 @@
 package com.nf.fuelspot.service
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
@@ -26,7 +27,7 @@ class GasStationService {
             if (posto.getPostoName().isEmpty() || posto.getPostoCnpj().isEmpty() ||
                 posto.getPostoCep().isEmpty() || posto.getPostoBairro().isEmpty() ||
                 posto.getPostoRua().isEmpty() || posto.getPostoNumero().isEmpty() ||
-                posto.getPostoCidade().isEmpty() || Objects.nonNull(posto.getPostoPrice())
+                posto.getPostoCidade().isEmpty()
             ) {
                 val snackbar = Snackbar.make(
                     it, "Todos os campos precisam estar preenchidos!", Snackbar.LENGTH_SHORT
@@ -53,7 +54,7 @@ class GasStationService {
                     "numero" to posto.getPostoNumero(),
                     "cidade" to posto.getPostoCidade(),
                     "postoId" to posto.getPostoId(),
-                    "valor" to posto.getPostoPrice()
+                    "valor" to posto.getPostoPrice().toString()
                 )
 
                 database.collection("Postos")
@@ -132,11 +133,13 @@ class GasStationService {
                             },${document.get("bairro")} ")
 
                         val gasAux = GasStationController()
+                        val valorAux = BigDecimal(document.get("valor").toString())
+                        Log.d(TAG, "!!!!!!!! ${valorAux}")
                         gasAux.createGasStation(
                             context,
                             document.get("nome").toString(),
-                            BigDecimal("valor"),
-                            BigDecimal("10"),
+                            valorAux,
+                            BigDecimal("5"),
                             aux,
                             "",
                             "")
