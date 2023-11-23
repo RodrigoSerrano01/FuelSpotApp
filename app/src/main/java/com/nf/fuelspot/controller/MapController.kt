@@ -7,6 +7,7 @@ import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -39,7 +40,8 @@ class MapController {
         val mMap= googleMap
 
         mMap.addMarker(
-            MarkerOptions().position(location).title(gasStationController.getGasName())
+            MarkerOptions().position(location).title(gasStationController.getGasName()).icon(
+                BitmapDescriptorFactory.defaultMarker(130.97F))
         )
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(location, 15f))
     }

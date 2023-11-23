@@ -1,17 +1,18 @@
 package com.nf.fuelspot.ui.activity
 
+import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.location.Geocoder
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.nf.fuelspot.R
 import com.nf.fuelspot.controller.PostoController
 import com.nf.fuelspot.databinding.ActivityRegisterSpotBinding
 import com.nf.fuelspot.service.GasStationService
+import java.math.BigDecimal
 import java.util.Locale
 
 class RegisterSpotActivity : AppCompatActivity() {
@@ -28,7 +29,7 @@ class RegisterSpotActivity : AppCompatActivity() {
 
         val logOutButton = findViewById<Button>(R.id.bt_signOut)
         val profileButton = findViewById<Button>(R.id.profileButton)
-            val registerButton = findViewById<Button>(R.id.registerButton)
+        val registerButton = findViewById<Button>(R.id.registerButton)
         val loginButton = findViewById<Button>(R.id.loginButton)
         val textTittle = findViewById<TextView>(R.id.appTittle)
         val confirmButton = findViewById<TextView>(R.id.login_loginButton)
@@ -44,15 +45,15 @@ class RegisterSpotActivity : AppCompatActivity() {
 
 
 
-            confirmCPF.setOnClickListener {
-                setVisible()
-                binding.registerBairro.setEnabled(true)
-                binding.registerCidade.setEnabled(true)
-                binding.registerRua.setEnabled(true)
-                binding.registerNumero.setEnabled(true)
+        confirmCPF.setOnClickListener {
+            setVisible()
+            binding.registerBairro.setEnabled(true)
+            binding.registerCidade.setEnabled(true)
+            binding.registerRua.setEnabled(true)
+            binding.registerNumero.setEnabled(true)
 
-                autoCompleteAddress();
-            }
+            autoCompleteAddress();
+        }
 
 
 
@@ -60,19 +61,29 @@ class RegisterSpotActivity : AppCompatActivity() {
         binding.loginLoginButton.setOnClickListener {
             val posto = createGasStation()
             GasStationService.gasAddDatabase(posto, it, userName)
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
 
-        HeaderActivity.createListener(logOutButton, profileButton, registerButton, loginButton, textTittle, this)
+        HeaderActivity.createListener(
+            logOutButton,
+            profileButton,
+            registerButton,
+            loginButton,
+            textTittle,
+            this
+        )
     }
 
 
-    fun setVisible(){
+    fun setVisible() {
         binding.registerBairro.setVisibility(View.VISIBLE)
         binding.registerCidade.setVisibility(View.VISIBLE)
         binding.registerRua.setVisibility(View.VISIBLE)
         binding.registerNumero.setVisibility(View.VISIBLE)
     }
-    fun setInvisible(){
+
+    fun setInvisible() {
         binding.registerBairro.setVisibility(View.GONE)
         binding.registerCidade.setVisibility(View.GONE)
         binding.registerRua.setVisibility(View.GONE)
@@ -88,14 +99,16 @@ class RegisterSpotActivity : AppCompatActivity() {
         val cidade = binding.registerCidade.text.toString()
         val rua = binding.registerRua.text.toString()
         val numero = binding.registerNumero.text.toString()
+        val valor = binding.registerPreco.text.toString()
 
+        val valorGasolina = BigDecimal(valor)
 
         val posto = PostoController()
-        posto.createGasStation(nome, cnpj, cep, bairro, cidade, rua, numero)
+        posto.createGasStation(nome, cnpj, cep, bairro, cidade, rua, numero, valorGasolina)
         return posto
     }
 
-    fun autoCompleteAddress(){
+    fun autoCompleteAddress() {
         val cep = binding.registerCep.text
         val geocoder = Geocoder(this, Locale.getDefault())
         val addresses = geocoder.getFromLocationName(cep.toString(), 1)

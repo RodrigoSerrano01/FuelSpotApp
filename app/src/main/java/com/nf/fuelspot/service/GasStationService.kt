@@ -1,6 +1,7 @@
 package com.nf.fuelspot.service
 
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.graphics.Color
 import android.util.Log
@@ -14,6 +15,7 @@ import com.google.firebase.ktx.Firebase
 import com.nf.fuelspot.controller.GasStationController
 import com.nf.fuelspot.controller.PostoController
 import java.math.BigDecimal
+import java.util.Objects
 
 class GasStationService {
 
@@ -33,6 +35,16 @@ class GasStationService {
                 snackbar.setBackgroundTint(Color.RED)
                 snackbar.show()
             } else {
+                if (posto.getPostoPrice().toDouble() <= 0.0) {
+                    val zeroBigDecimal = BigDecimal("0.0")
+                    posto.setPostoValorPrice(zeroBigDecimal)
+                    val snackbar = Snackbar.make(
+                        it, "Gasolina recebeu o valor de R$0,00!", Snackbar.LENGTH_SHORT
+                    )
+                    snackbar.setBackgroundTint(Color.YELLOW)
+                    snackbar.setTextColor(Color.BLACK)
+                    snackbar.show()
+                }
                 val postoMap = hashMapOf(
                     "nome" to posto.getPostoName(),
                     "cnpj" to posto.getPostoCnpj(),
@@ -42,6 +54,7 @@ class GasStationService {
                     "numero" to posto.getPostoNumero(),
                     "cidade" to posto.getPostoCidade(),
                     "postoId" to posto.getPostoId(),
+                    "valor" to posto.getPostoPrice().toString()
                 )
 
                 database.collection("Postos")
@@ -114,14 +127,19 @@ class GasStationService {
                 .get()
                 .addOnSuccessListener { result ->
                     for (document in result) {
-                        val aux: String = ("${document.get("cidade")}, ${document.get("numero")}, ${document.get("rua")},${document.get("cep")},${document.get("bairro")} ")
+                        val aux: String =
+                            ("${document.get("cidade")}, ${document.get("numero")}, ${document.get("rua")},${
+                                document.get("cep")
+                            },${document.get("bairro")} ")
 
                         val gasAux = GasStationController()
+                        val valorAux = BigDecimal(document.get("valor").toString())
+                        Log.d(TAG, "!!!!!!!! ${valorAux}")
                         gasAux.createGasStation(
                             context,
                             document.get("nome").toString(),
-                            BigDecimal("10"),
-                            BigDecimal("10"),
+                            valorAux,
+                            BigDecimal("5"),
                             aux,
                             "",
                             "")
