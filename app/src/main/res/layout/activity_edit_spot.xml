@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.activity.EditSpotActivity"
+    android:background="@color/grayBG">
+
+
+
+    <include
+        android:id="@+id/header_layout"
+        layout="@layout/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="0dp" />
+
+    <include
+        android:id="@+id/appVersion"
+        layout="@layout/version_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout"
+        app:layout_constraintVertical_bias="1.0"
+
+        tools:layout_editor_absoluteX="-16dp" />
+
+    <TextView
+        android:id="@+id/edit_nomeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/postoNomeLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/edit_nome"
+        app:layout_constraintEnd_toEndOf="@+id/edit_nome"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_nome" />
+
+
+
+    <EditText
+        android:id="@+id/edit_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:backgroundTint="@color/green"
+
+        android:ems="10"
+        android:hint="Nome do Posto"
+        android:inputType="text"
+        android:maxLength="50"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header_layout" />
+
+
+    <!--Preco-->
+
+    <TextView
+        android:id="@+id/edit_cepText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cepLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/edit_cep"
+        app:layout_constraintEnd_toEndOf="@+id/edit_cep"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_cep" />
+
+    <com.santalu.maskara.widget.MaskEditText
+        android:id="@+id/edit_cep"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="100dp"
+        android:backgroundTint="@color/green"
+        android:ems="10"
+        android:hint="_____-___"
+        android:inputType="number"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome"
+        app:mask="_____-___"
+        app:maskCharacter="_"
+        app:maskStyle="completable" />
+
+    <TextView
+        android:id="@+id/edit_precoText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/precoLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/edit_preco"
+        app:layout_constraintEnd_toEndOf="@+id/edit_preco"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_preco" />
+
+
+    <!--Bairro-->
+
+
+    <EditText
+        android:id="@+id/edit_preco"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="24dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="00.00"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toStartOf="@+id/edit_cep"
+        app:layout_constraintHorizontal_bias="0.97"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_nome" />
+
+    <TextView
+        android:id="@+id/edit_bairroText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/bairroLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/edit_bairro"
+        app:layout_constraintEnd_toEndOf="@+id/edit_bairro"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_bairro" />
+
+    <EditText
+        android:id="@+id/edit_bairro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="Bairro"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cep" />
+
+    <!--Cidade-->
+
+    <TextView
+        android:id="@+id/edit_cidadeText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/cidadeLabel"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+
+        app:layout_constraintBottom_toTopOf="@+id/edit_cidade"
+        app:layout_constraintEnd_toEndOf="@+id/edit_cidade"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_cidade" />
+
+    <EditText
+        android:id="@+id/edit_cidade"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="Cidade"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintStart_toEndOf="@+id/edit_bairro"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cep" />
+
+    <!--Rua-->
+
+    <TextView
+        android:id="@+id/edit_ruaText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/ruaLabel"
+        android:textColor="@color/black"
+
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/edit_rua"
+        app:layout_constraintEnd_toEndOf="@+id/edit_rua"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_rua" />
+
+    <EditText
+        android:id="@+id/edit_rua"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="Rua"
+        android:inputType="text"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.305"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_bairro" />
+
+    <!--Número-->
+
+    <TextView
+        android:id="@+id/edit_numeroText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/numeroLabel"
+        android:textColor="@color/black"
+
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toTopOf="@+id/edit_numero"
+        app:layout_constraintEnd_toEndOf="@+id/edit_numero"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edit_numero" />
+
+    <EditText
+        android:id="@+id/edit_numero"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:backgroundTint="@color/green"
+        android:ems="4"
+        android:hint="Número"
+        android:inputType="number"
+        android:maxLength="20"
+        android:textColor="#A9A9A9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.293"
+        app:layout_constraintStart_toEndOf="@+id/edit_rua"
+        app:layout_constraintTop_toBottomOf="@+id/edit_cidade" />
+
+
+    <CheckBox
+        android:id="@+id/checkbox_meat"
+        android:layout_width="127dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="28dp"
+        android:text="Desativar Posto"
+
+        android:textColor="@color/black"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toTopOf="@+id/edit_Button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/edit_Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button"
+        android:paddingStart="30dp"
+        android:paddingEnd="30dp"
+        android:text="@string/confirmarText"
+
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="29sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/appVersion"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
